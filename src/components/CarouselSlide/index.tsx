@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
   ButtonWrapper,
   ContentArea,
@@ -22,20 +22,42 @@ interface Arrow {
  * # Done
  * Render Slides.
  * Show a button for each slide.
+ * Show active slide button
  *
  * # To do
- * Show active slide button
  * Show arrows.
  */
 export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
-  const slidesAmount = React.Children.count(props.children)
+  const carouselSlideRef = useRef<HTMLDivElement>(null)
+  const [scrollLeft, setScrollLeft] = useState<number>(0)
+  const [slidesWidth, setSlidesWidth] = useState(0)
+  const [slidesAmount, setSlidesAmount] = useState(0)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  function updateScrollPosition(scrollPosition: number) {
+    setScrollLeft(scrollPosition)
+  }
+
+  useEffect(() => {
+    setSlidesWidth(carouselSlideRef?.current!.children[0].clientWidth)
+    setSlidesAmount(React.Children.count(props.children))
+  }, [props.children])
+
+  useEffect(() => {
+    setActiveSlide(scrollLeft / slidesWidth)
+  }, [scrollLeft, slidesWidth])
 
   return (
-    <StyledCarouselSlide>
+    <StyledCarouselSlide
+      ref={carouselSlideRef}
+      onScrollCapture={(event: any) =>
+        updateScrollPosition(event.target.scrollLeft)
+      }
+    >
       <ContentArea>{props.children}</ContentArea>
       <ButtonWrapper>
         {[...Array(slidesAmount)].map((element, index) => (
-          <SlideButton key={index} active={true} />
+          <SlideButton key={index} active={activeSlide === index} />
         ))}
       </ButtonWrapper>
     </StyledCarouselSlide>
