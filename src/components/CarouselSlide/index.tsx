@@ -2,7 +2,15 @@ import React from "react"
 import { StyledCarouselSlide } from "./styles"
 
 interface CarouselSlideProps extends React.HTMLAttributes<HTMLDivElement> {
-  arrows?: boolean
+  arrows?: {
+    left: Arrow
+    right: Arrow
+  }
+}
+
+interface Arrow {
+  active: string
+  inactive: string
 }
 
 export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
