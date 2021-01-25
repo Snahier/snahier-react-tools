@@ -22,6 +22,7 @@ export const ButtonWrapper = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%);
 
   display: grid;
   grid-auto-flow: column;
