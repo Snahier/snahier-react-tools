@@ -18,15 +18,6 @@ interface Arrow {
   inactive: string
 }
 
-/**
- * # Done
- * Render Slides.
- * Show a button for each slide.
- * Show active slide button
- *
- * # To do
- * Show arrows.
- */
 export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   const carouselSlideRef = useRef<HTMLDivElement>(null)
   const [scrollLeft, setScrollLeft] = useState<number>(0)
@@ -36,6 +27,14 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
 
   function updateScrollPosition(scrollPosition: number) {
     setScrollLeft(scrollPosition)
+  }
+
+  function navigateToSlide(slideNumber: number) {
+    carouselSlideRef?.current?.children[0].children[slideNumber].scrollIntoView(
+      {
+        behavior: "smooth",
+      }
+    )
   }
 
   useEffect(() => {
@@ -57,7 +56,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
       <ContentArea>{props.children}</ContentArea>
       <ButtonWrapper>
         {[...Array(slidesAmount)].map((element, index) => (
-          <SlideButton key={index} active={activeSlide === index} />
+          <SlideButton
+            key={index}
+            active={activeSlide === index}
+            onClick={() => navigateToSlide(index)}
+          />
         ))}
       </ButtonWrapper>
     </StyledCarouselSlide>
