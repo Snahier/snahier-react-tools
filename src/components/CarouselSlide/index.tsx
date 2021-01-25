@@ -25,17 +25,15 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   const [slidesAmount, setSlidesAmount] = useState(0)
   const [activeSlide, setActiveSlide] = useState(0)
 
-  function updateScrollPosition(scrollPosition: number) {
+  const updateScrollPosition = (scrollPosition: number) =>
     setScrollLeft(scrollPosition)
-  }
 
-  function navigateToSlide(slideNumber: number) {
+  const navigateToSlide = (slideNumber: number) =>
     carouselSlideRef?.current?.children[0].children[slideNumber].scrollIntoView(
       {
         behavior: "smooth",
       }
     )
-  }
 
   useEffect(() => {
     setSlidesWidth(carouselSlideRef?.current!.children[0].clientWidth)
@@ -46,6 +44,31 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
     setActiveSlide(scrollLeft / slidesWidth)
   }, [scrollLeft, slidesWidth])
 
+  const renderCustomSlideButtons = () =>
+    [...Array(slidesAmount)].map((element, index) =>
+      activeSlide === index ? (
+        <div onClick={() => navigateToSlide(index)}>
+          {props.buttons?.active}
+        </div>
+      ) : (
+        <div onClick={() => navigateToSlide(index)}>
+          {props.buttons?.inactive}
+        </div>
+      )
+    )
+
+  const renderDefaultSlideButtons = () =>
+    [...Array(slidesAmount)].map((element, index) => (
+      <SlideButton
+        key={index}
+        active={activeSlide === index}
+        onClick={() => navigateToSlide(index)}
+      />
+    ))
+
+  const renderButtons = () =>
+    props.buttons ? renderCustomSlideButtons() : renderDefaultSlideButtons()
+
   return (
     <StyledCarouselSlide
       ref={carouselSlideRef}
@@ -54,27 +77,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
       }
     >
       <ContentArea>{props.children}</ContentArea>
-      <ButtonWrapper>
-        {props.buttons?.active && props.buttons?.inactive
-          ? [...Array(slidesAmount)].map((element, index) =>
-              activeSlide === index ? (
-                <div onClick={() => navigateToSlide(index)}>
-                  {props.buttons?.active}
-                </div>
-              ) : (
-                <div onClick={() => navigateToSlide(index)}>
-                  {props.buttons?.inactive}
-                </div>
-              )
-            )
-          : [...Array(slidesAmount)].map((element, index) => (
-              <SlideButton
-                key={index}
-                active={activeSlide === index}
-                onClick={() => navigateToSlide(index)}
-              />
-            ))}
-      </ButtonWrapper>
+      <ButtonWrapper>{renderButtons()}</ButtonWrapper>
     </StyledCarouselSlide>
   )
 }
