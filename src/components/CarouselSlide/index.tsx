@@ -8,14 +8,14 @@ import {
 
 interface CarouselSlideProps extends React.HTMLAttributes<HTMLDivElement> {
   arrows?: {
-    left: Arrow
-    right: Arrow
+    left: string
+    right: string
   }
-}
-
-interface Arrow {
-  active: string
-  inactive: string
+  buttons?: {
+    active: any
+    inactive: any
+    position?: string
+  }
 }
 
 export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
@@ -55,13 +55,25 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
     >
       <ContentArea>{props.children}</ContentArea>
       <ButtonWrapper>
-        {[...Array(slidesAmount)].map((element, index) => (
-          <SlideButton
-            key={index}
-            active={activeSlide === index}
-            onClick={() => navigateToSlide(index)}
-          />
-        ))}
+        {props.buttons?.active && props.buttons?.inactive
+          ? [...Array(slidesAmount)].map((element, index) =>
+              activeSlide === index ? (
+                <div onClick={() => navigateToSlide(index)}>
+                  {props.buttons?.active}
+                </div>
+              ) : (
+                <div onClick={() => navigateToSlide(index)}>
+                  {props.buttons?.inactive}
+                </div>
+              )
+            )
+          : [...Array(slidesAmount)].map((element, index) => (
+              <SlideButton
+                key={index}
+                active={activeSlide === index}
+                onClick={() => navigateToSlide(index)}
+              />
+            ))}
       </ButtonWrapper>
     </StyledCarouselSlide>
   )
