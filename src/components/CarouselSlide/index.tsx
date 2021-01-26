@@ -32,6 +32,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
     carouselSlideRef?.current?.children[0].children[slideNumber].scrollIntoView(
       {
         behavior: "smooth",
+        block: "nearest",
       }
     )
 
