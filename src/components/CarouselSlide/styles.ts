@@ -16,6 +16,8 @@ export const ContentArea = styled.div`
   > * {
     scroll-snap-align: center;
   }
+
+  height: 100%;
 `
 
 export const ButtonWrapper = styled.div`
