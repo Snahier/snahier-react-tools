@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
-  html,body,#root {
+  html, body, #root {
     height: 100%;
     font-size: 100%;
     font-family: "proxima-nova", sans-serif;

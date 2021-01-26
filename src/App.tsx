@@ -1,14 +1,15 @@
 import React from "react"
+import { ThemeProvider } from "styled-components"
 import { Routes } from "./pages/routes"
 import { GlobalStyles } from "./styles/GlobalStyles"
+import { dark } from "./styles/theme"
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={dark}>
       <GlobalStyles />
-      <h1>Components</h1>
       <Routes />
-    </div>
+    </ThemeProvider>
   )
 }
 
