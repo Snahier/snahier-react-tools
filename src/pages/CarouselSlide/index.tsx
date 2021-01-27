@@ -19,25 +19,25 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
         }}
       >
         <Slide>
-          <img src="https://picsum.photos/120?random=1" alt="" />
+          <img src="https://picsum.photos/640/480?random=1" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/120?random=2" alt="" />
+          <img src="https://picsum.photos/640/480?random=2" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/120?random=3" alt="" />
+          <img src="https://picsum.photos/640/480?random=3" alt="" />
         </Slide>
       </CarouselSlide>
 
       <CarouselSlide>
         <Slide>
-          <img src="https://picsum.photos/120?random=1" alt="" />
+          <img src="https://picsum.photos/640/480?random=1" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/120?random=2" alt="" />
+          <img src="https://picsum.photos/640/480?random=2" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/120?random=3" alt="" />
+          <img src="https://picsum.photos/640/480?random=3" alt="" />
         </Slide>
       </CarouselSlide>
     </StyledPageCarouselSlide>
