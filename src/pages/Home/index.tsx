@@ -19,6 +19,7 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
 
       <ComponentsList>
         <Link to="carousel-slide/">Carousel Slide</Link>
+        <Link to="modal/">Modal</Link>
       </ComponentsList>
     </StyledPageHome>
   )
