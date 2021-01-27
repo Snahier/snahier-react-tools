@@ -28,13 +28,15 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   const updateScrollPosition = (scrollPosition: number) =>
     setScrollLeft(scrollPosition)
 
-  const navigateToSlide = (slideNumber: number) =>
+  const navigateToSlide = (slideNumber: number) => {
     carouselSlideRef?.current?.children[0].children[slideNumber].scrollIntoView(
       {
         behavior: "smooth",
         block: "nearest",
       }
     )
+    setActiveSlide(slideNumber)
+  }
 
   useEffect(() => {
     setSlidesWidth(carouselSlideRef?.current!.children[0].clientWidth)
@@ -42,7 +44,8 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   }, [props.children])
 
   useEffect(() => {
-    setActiveSlide(scrollLeft / slidesWidth)
+    if (Number.isInteger(scrollLeft / slidesWidth))
+      setActiveSlide(scrollLeft / slidesWidth)
   }, [scrollLeft, slidesWidth])
 
   const renderCustomSlideButtons = () =>
@@ -76,6 +79,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
       onScrollCapture={(event: any) =>
         updateScrollPosition(event.target.scrollLeft)
       }
+      {...props}
     >
       <ContentArea>{props.children}</ContentArea>
       <ButtonWrapper>{renderButtons()}</ButtonWrapper>
