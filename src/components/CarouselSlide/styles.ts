@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/macro"
+import { viewport } from "../../styles/helpers/viewport"
 
 export const StyledCarouselSlide = styled.div`
   position: relative;
@@ -18,6 +19,10 @@ export const ContentArea = styled.div`
   }
 
   height: 100%;
+
+  @media (min-width: ${viewport.desktop.large}px) {
+    overflow-x: hidden;
+  }
 `
 
 export const ButtonWrapper = styled.div`
