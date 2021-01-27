@@ -6,7 +6,7 @@ interface StyledPageHomeProps {}
 
 export const PageHome: React.FC<StyledPageHomeProps> = () => {
   return (
-    <StyledPageHome>
+    <StyledPageHome className="page">
       <Header
         style={{
           gridArea: "header",

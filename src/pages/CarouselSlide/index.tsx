@@ -7,7 +7,7 @@ interface PageCarouselSlideProps {}
 
 export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
   return (
-    <StyledPageCarouselSlide>
+    <StyledPageCarouselSlide className="page">
       <Header />
 
       <h2>Carousel Slide Component</h2>
