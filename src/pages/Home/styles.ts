@@ -1,20 +1,7 @@
-import styled, { css } from "styled-components/macro"
+import styled from "styled-components/macro"
 import { viewport } from "../../styles/helpers/viewport"
 
-export const StyledPageHome = styled.div`
-  ${({ theme }) => css`
-    display: grid;
-    grid: "header" max-content;
-    grid-auto-rows: max-content;
-    gap: 1rem;
-
-    height: 100%;
-
-    background: ${theme.background.primary};
-
-    color: ${theme.text.primary};
-  `}
-`
+export const StyledPageHome = styled.div``
 
 export const ComponentsList = styled.div`
   display: grid;
