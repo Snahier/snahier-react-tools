@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { StyledHeader } from "./styles"
 
-interface HeaderProps {}
+interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Header: React.FC<HeaderProps> = () => {
   return (
