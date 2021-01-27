@@ -17,27 +17,34 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
           active: <button>active</button>,
           inactive: <button>inactive</button>,
         }}
+        style={{
+          maxHeight: "300px",
+        }}
       >
         <Slide>
-          <img src="https://picsum.photos/640/480?random=1" alt="" />
+          <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/640/480?random=2" alt="" />
+          <img src="https://picsum.photos/480/?random=2" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/640/480?random=3" alt="" />
+          <span>Only text</span>
         </Slide>
       </CarouselSlide>
 
-      <CarouselSlide>
+      <CarouselSlide
+        style={{
+          maxHeight: "300px",
+        }}
+      >
         <Slide>
-          <img src="https://picsum.photos/640/480?random=1" alt="" />
+          <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/640/480?random=2" alt="" />
+          <img src="https://picsum.photos/480/?random=2" alt="" />
         </Slide>
         <Slide>
-          <img src="https://picsum.photos/640/480?random=3" alt="" />
+          <span>Only text</span>
         </Slide>
       </CarouselSlide>
     </StyledPageCarouselSlide>
