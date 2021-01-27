@@ -18,6 +18,7 @@ export const ContentArea = styled.div`
     scroll-snap-align: center;
   }
 
+  width: 100%;
   height: 100%;
 
   @media (min-width: ${viewport.desktop.large}) {
