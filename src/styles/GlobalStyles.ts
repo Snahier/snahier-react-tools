@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components/macro"
+import { createGlobalStyle, css } from "styled-components/macro"
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -15,5 +15,19 @@ export const GlobalStyles = createGlobalStyle`
     
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page {
+    ${({ theme }) => css`
+      display: grid;
+      gap: 1rem;
+      grid-auto-rows: max-content;
+
+      height: 100%;
+
+      background-color: ${theme.background.primary};
+
+      color: ${theme.text.primary};
+    `}
   }
 `
