@@ -9,6 +9,7 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
   return (
     <StyledPageCarouselSlide>
       <Header />
+
       <h2>Carousel Slide Component</h2>
 
       <CarouselSlide
@@ -17,6 +18,18 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
           inactive: <button>inactive</button>,
         }}
       >
+        <Slide>
+          <img src="https://picsum.photos/120?random=1" alt="" />
+        </Slide>
+        <Slide>
+          <img src="https://picsum.photos/120?random=2" alt="" />
+        </Slide>
+        <Slide>
+          <img src="https://picsum.photos/120?random=3" alt="" />
+        </Slide>
+      </CarouselSlide>
+
+      <CarouselSlide>
         <Slide>
           <img src="https://picsum.photos/120?random=1" alt="" />
         </Slide>
