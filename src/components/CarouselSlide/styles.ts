@@ -20,7 +20,7 @@ export const ContentArea = styled.div`
 
   height: 100%;
 
-  @media (min-width: ${viewport.desktop.large}px) {
+  @media (min-width: ${viewport.desktop.large}) {
     overflow-x: hidden;
   }
 `

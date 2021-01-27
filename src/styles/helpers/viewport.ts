@@ -1,10 +1,10 @@
 export const viewport = {
   mobile: {
-    landscape: 576,
+    landscape: "576px",
   },
-  tablets: 768,
+  tablets: "768px",
   desktop: {
-    large: 992,
-    extraLarge: 1200,
+    large: "992px",
+    extraLarge: "1200px",
   },
 }
