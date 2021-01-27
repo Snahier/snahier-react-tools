@@ -1,4 +1,4 @@
-import { BackgroundBox, StyledModal } from "./styles"
+import { BackgroundBox, ModalContent, StyledModal } from "./styles"
 
 interface ModalProps {
   open: boolean
@@ -15,7 +15,7 @@ export const Modal: React.FC<ModalProps> = ({ opacity = 20, ...props }) => {
         opacity={opacityPercentageInDecimals}
         onClick={() => props.onClose()}
       />
-      <div>StyledModal Component</div>
+      <ModalContent>{props.children}</ModalContent>
     </StyledModal>
   ) : null
 }
