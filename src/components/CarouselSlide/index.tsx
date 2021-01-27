@@ -48,11 +48,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   const renderCustomSlideButtons = () =>
     [...Array(slidesAmount)].map((element, index) =>
       activeSlide === index ? (
-        <div onClick={() => navigateToSlide(index)}>
+        <div key={index} onClick={() => navigateToSlide(index)}>
           {props.buttons?.active}
         </div>
       ) : (
-        <div onClick={() => navigateToSlide(index)}>
+        <div key={index} onClick={() => navigateToSlide(index)}>
           {props.buttons?.inactive}
         </div>
       )
