@@ -9,9 +9,9 @@ export const Routes = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={PageHome} />
-        <Route path="carousel-slide" component={PageCarouselSlide} />
-        <Route path="modal" component={PageModal} />
-        <Route path="tooltip" component={PageTooltip} />
+        <Route path="/carousel-slide" component={PageCarouselSlide} />
+        <Route path="/modal" component={PageModal} />
+        <Route path="/tooltip" component={PageTooltip} />
       </Switch>
     </BrowserRouter>
   )
