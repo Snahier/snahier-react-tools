@@ -5,24 +5,30 @@ import {
   TooltipContentWrapper,
 } from "./styles"
 
-interface TooltipProps {}
+interface TooltipProps {
+  clickMode?: boolean
+}
 
-export const Tooltip: React.FC<TooltipProps> = (props) => {
+export const Tooltip: React.FC<TooltipProps> = ({ clickMode, ...props }) => {
   const [isActive, setIsActive] = useState(false)
+  const hoverMode = !clickMode
 
   function toggleTooltip() {
     setIsActive(!isActive)
   }
 
   return (
-    <StyledTooltip>
+    <StyledTooltip {...props}>
       {isActive && (
-        <TooltipContentWrapper>Tooltip content example</TooltipContentWrapper>
+        <TooltipContentWrapper>
+          <div style={{ width: "max-content" }}>Tooltip content example</div>
+        </TooltipContentWrapper>
       )}
 
       <TooltipChildWrapper
-        onMouseEnter={toggleTooltip}
-        onMouseLeave={toggleTooltip}
+        onMouseEnter={() => hoverMode && toggleTooltip()}
+        onMouseLeave={() => hoverMode && toggleTooltip()}
+        onClick={() => clickMode && toggleTooltip()}
       >
         {props.children}
       </TooltipChildWrapper>

@@ -15,7 +15,7 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
           <button>hover me</button>
         </Tooltip>
 
-        <Tooltip>
+        <Tooltip clickMode>
           <button>click me</button>
         </Tooltip>
       </ButtonsContainer>
