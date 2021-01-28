@@ -14,15 +14,23 @@ export const TooltipChildWrapper = styled.div``
 const positions = {
   top: css`
     bottom: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
   `,
   bottom: css`
     top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
   `,
   left: css`
     right: calc(100% + 1rem);
+    top: 50%;
+    transform: translateY(-50%);
   `,
   right: css`
     left: calc(100% + 1rem);
+    top: 50%;
+    transform: translateY(-50%);
   `,
 }
 interface ContentProps {
