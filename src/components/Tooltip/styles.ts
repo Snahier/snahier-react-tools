@@ -12,10 +12,18 @@ export const StyledTooltip = styled.div`
 export const TooltipChildWrapper = styled.div``
 
 const positions = {
-  top: css``,
-  bottom: css``,
-  left: css``,
-  right: css``,
+  top: css`
+    bottom: calc(100% + 1rem);
+  `,
+  bottom: css`
+    top: calc(100% + 1rem);
+  `,
+  left: css`
+    right: calc(100% + 1rem);
+  `,
+  right: css`
+    left: calc(100% + 1rem);
+  `,
 }
 interface ContentProps {
   position: Position
@@ -27,9 +35,9 @@ export enum Position {
   RIGHT = "right",
 }
 export const TooltipContentWrapper = styled.div<ContentProps>`
-  ${({ theme }) => css`
+  ${({ theme, position }) => css`
     position: absolute;
-    bottom: 100%;
+    ${positions[position]}
 
     box-shadow: -13px 3px 13px 0 ${alpha(theme.colors.black, 25)};
     border-radius: 0.5rem;
