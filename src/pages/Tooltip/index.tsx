@@ -1,10 +1,12 @@
+import { Header } from "../../components/Header"
 import { StyledTooltip } from "./styles"
 
 interface PageTooltipProps {}
 
 export const PageTooltip: React.FC<PageTooltipProps> = () => {
   return (
-    <StyledTooltip>
+    <StyledTooltip className="page">
+      <Header />
       <div>Tooltip Component</div>
     </StyledTooltip>
   )
