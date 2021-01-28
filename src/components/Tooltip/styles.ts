@@ -11,7 +11,22 @@ export const StyledTooltip = styled.div`
 
 export const TooltipChildWrapper = styled.div``
 
-export const TooltipContentWrapper = styled.div`
+const positions = {
+  top: css``,
+  bottom: css``,
+  left: css``,
+  right: css``,
+}
+interface ContentProps {
+  position: Position
+}
+export enum Position {
+  TOP = "top",
+  BOTTOM = "bottom",
+  LEFT = "left",
+  RIGHT = "right",
+}
+export const TooltipContentWrapper = styled.div<ContentProps>`
   ${({ theme }) => css`
     position: absolute;
     bottom: 100%;

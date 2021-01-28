@@ -1,15 +1,21 @@
 import { useState } from "react"
 import {
+  Position,
   StyledTooltip,
   TooltipChildWrapper,
   TooltipContentWrapper,
 } from "./styles"
 
-interface TooltipProps {
+interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   clickMode?: boolean
+  position?: Position
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({ clickMode, ...props }) => {
+export const Tooltip: React.FC<TooltipProps> = ({
+  clickMode,
+  position = Position.TOP,
+  ...props
+}) => {
   const [isActive, setIsActive] = useState(false)
   const hoverMode = !clickMode
 
@@ -20,7 +26,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ clickMode, ...props }) => {
   return (
     <StyledTooltip {...props}>
       {isActive && (
-        <TooltipContentWrapper>
+        <TooltipContentWrapper position={position}>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
         </TooltipContentWrapper>
       )}
