@@ -18,8 +18,9 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
       <h3>Available Components</h3>
 
       <ComponentsList>
-        <Link to="carousel-slide/">Carousel Slide</Link>
-        <Link to="modal/">Modal</Link>
+        <Link to="carousel-slide">Carousel Slide</Link>
+        <Link to="modal">Modal</Link>
+        <Link to="tooltip">Tooltip</Link>
       </ComponentsList>
     </StyledPageHome>
   )
