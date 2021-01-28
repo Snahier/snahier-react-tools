@@ -7,7 +7,7 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
   return (
     <StyledTooltip className="page">
       <Header />
-      <div>Tooltip Component</div>
+      <h2>Tooltip Component</h2>
     </StyledTooltip>
   )
 }
