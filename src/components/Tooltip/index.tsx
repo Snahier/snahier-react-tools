@@ -19,21 +19,23 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const [isActive, setIsActive] = useState(false)
   const hoverMode = !clickMode
 
-  function toggleTooltip() {
-    setIsActive(!isActive)
-  }
+  const toggleTooltip = () => setIsActive(!isActive)
+  const activate = () => setIsActive(true)
+  const deactivate = () => setIsActive(false)
 
   return (
     <StyledTooltip {...props}>
       {isActive && (
         <TooltipContentWrapper position={position}>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
+          <div style={{ width: "max-content" }}>Tooltip content example</div>
+          <div style={{ width: "max-content" }}>Tooltip content example</div>
         </TooltipContentWrapper>
       )}
 
       <TooltipChildWrapper
-        onMouseEnter={() => hoverMode && toggleTooltip()}
-        onMouseLeave={() => hoverMode && toggleTooltip()}
+        onMouseEnter={() => hoverMode && activate()}
+        onMouseLeave={() => hoverMode && deactivate()}
         onClick={() => clickMode && toggleTooltip()}
       >
         {props.children}
