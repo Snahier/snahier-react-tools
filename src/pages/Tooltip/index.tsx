@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header"
 import { Tooltip } from "../../components/Tooltip"
-import { StyledPageTooltip } from "./styles"
+import { ButtonsContainer, StyledPageTooltip } from "./styles"
 
 interface PageTooltipProps {}
 
@@ -10,13 +10,15 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
       <Header />
       <h2>Tooltip Component</h2>
 
-      <Tooltip>
-        <button>hover me</button>
-      </Tooltip>
+      <ButtonsContainer>
+        <Tooltip>
+          <button>hover me</button>
+        </Tooltip>
 
-      <Tooltip>
-        <button>click me</button>
-      </Tooltip>
+        <Tooltip>
+          <button>click me</button>
+        </Tooltip>
+      </ButtonsContainer>
     </StyledPageTooltip>
   )
 }
