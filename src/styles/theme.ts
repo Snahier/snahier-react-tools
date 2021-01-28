@@ -3,9 +3,13 @@ export const dark = {
 
   background: {
     primary: "#011627",
-    secondary: "#437F97",
+    secondary: "#437f97",
   },
   text: {
-    primary: "#EBF2FA",
+    primary: "#ebf2fA",
+  },
+  colors: {
+    white: "#ffffff",
+    black: "#000000",
   },
 }
