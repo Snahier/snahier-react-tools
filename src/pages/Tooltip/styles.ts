@@ -8,3 +8,10 @@ export const ButtonsContainer = styled.div`
   grid-auto-columns: 1fr;
   justify-items: center;
 `
+
+export const OverflowHiddenWrapper = styled.div`
+  padding: 2rem;
+  overflow: hidden;
+
+  background-color: crimson;
+`
