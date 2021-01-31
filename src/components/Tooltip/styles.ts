@@ -11,17 +11,17 @@ export const StyledTooltip = styled.div`
 
 export const TooltipChildWrapper = styled.div``
 
-const positions = {
-  top: css`
-    bottom: calc(100% + 1rem);
-    left: 50%;
-    transform: translateX(-50%);
-  `,
-  bottom: css`
-    top: calc(100% + 1rem);
-    left: 50%;
-    transform: translateX(-50%);
-  `,
+interface ContentProps {
+  position: Position
+  arrow?: boolean
+}
+export enum Position {
+  TOP = "top",
+  BOTTOM = "bottom",
+  LEFT = "left",
+  RIGHT = "right",
+}
+const boxPositions = {
   left: css`
     right: calc(100% + 1rem);
     top: 50%;
@@ -32,25 +32,63 @@ const positions = {
     top: 50%;
     transform: translateY(-50%);
   `,
+  top: css`
+    bottom: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  `,
+  bottom: css`
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  `,
 }
-interface ContentProps {
-  position: Position
-}
-export enum Position {
-  TOP = "top",
-  BOTTOM = "bottom",
-  LEFT = "left",
-  RIGHT = "right",
+const arrowPositions = {
+  left: css`
+    right: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  `,
+  right: css`
+    left: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  `,
+  top: css`
+    left: 50%;
+    bottom: -0.5rem;
+    transform: translateX(-50%) rotate(45deg);
+  `,
+  bottom: css`
+    left: 50%;
+    top: -0.5rem;
+    transform: translateX(-50%) rotate(45deg);
+  `,
 }
 export const TooltipContentWrapper = styled.div<ContentProps>`
-  ${({ theme, position }) => css`
+  ${({ theme, position, arrow }) => css`
     position: absolute;
-    ${positions[position]}
+    ${boxPositions[position]}
 
     box-shadow: -13px 3px 13px 0 ${alpha(theme.colors.black, 25)};
     border-radius: 0.5rem;
     background-color: ${theme.colors.white};
 
     color: ${theme.colors.black};
+
+    ${arrow &&
+    css`
+      &::after {
+        content: "";
+        position: absolute;
+        ${arrowPositions[position]}
+        z-index: 3;
+
+        width: 1rem;
+        height: 1rem;
+
+        background-color: red;
+      }
+    `}
   `}
 `
