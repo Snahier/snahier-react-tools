@@ -15,28 +15,6 @@ interface ContentProps {
   position: "top" | "bottom" | "left" | "right"
   arrow?: boolean
 }
-const boxPositions = {
-  left: css`
-    right: calc(100% + 1rem);
-    top: 50%;
-    transform: translateY(-50%);
-  `,
-  right: css`
-    left: calc(100% + 1rem);
-    top: 50%;
-    transform: translateY(-50%);
-  `,
-  top: css`
-    bottom: calc(100% + 1rem);
-    left: 50%;
-    transform: translateX(-50%);
-  `,
-  bottom: css`
-    top: calc(100% + 1rem);
-    left: 50%;
-    transform: translateX(-50%);
-  `,
-}
 const arrowPositions = {
   left: css`
     right: -0.5rem;
@@ -61,8 +39,7 @@ const arrowPositions = {
 }
 export const TooltipContent = styled.div<ContentProps>`
   ${({ theme, position, arrow }) => css`
-    position: absolute;
-    ${boxPositions[position]}
+    position: fixed;
 
     box-shadow: -13px 3px 13px 0 ${alpha(theme.colors.black, 25)};
     border-radius: 0.5rem;
