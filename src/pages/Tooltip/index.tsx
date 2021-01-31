@@ -1,4 +1,5 @@
 import { Header } from "../../components/Header"
+import { PopperTooltip } from "../../components/PopperTooltip"
 import { Tooltip } from "../../components/Tooltip"
 import {
   ButtonsContainer,
@@ -28,9 +29,19 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
         </Tooltip>
 
         <OverflowHiddenWrapper>
-          <Tooltip clickMode>
-            <button>Overflow Hidden wrapper test</button>
-          </Tooltip>
+          <PopperTooltip
+            content={
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <br />
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </div>
+            }
+          >
+            <button>tooltip</button>
+          </PopperTooltip>
         </OverflowHiddenWrapper>
       </ButtonsContainer>
     </StyledPageTooltip>
