@@ -9,7 +9,7 @@ export const StyledTooltip = styled.div`
   height: max-content;
 `
 
-export const TooltipChildWrapper = styled.div``
+export const ParentWrapper = styled.div``
 
 interface ContentProps {
   position: "top" | "bottom" | "left" | "right"
@@ -59,7 +59,7 @@ const arrowPositions = {
     transform: translateX(-50%) rotate(45deg);
   `,
 }
-export const TooltipContentWrapper = styled.div<ContentProps>`
+export const TooltipContent = styled.div<ContentProps>`
   ${({ theme, position, arrow }) => css`
     position: absolute;
     ${boxPositions[position]}

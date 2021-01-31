@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import {
-  StyledTooltip,
-  TooltipChildWrapper,
-  TooltipContentWrapper,
-} from "./styles"
+import { ParentWrapper, StyledTooltip, TooltipContent } from "./styles"
 
 interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   clickMode?: boolean
@@ -44,20 +40,20 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <StyledTooltip {...props} ref={tooltipRef}>
       {isActive && (
-        <TooltipContentWrapper position={position} arrow={arrow}>
+        <TooltipContent position={position} arrow={arrow}>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
-        </TooltipContentWrapper>
+        </TooltipContent>
       )}
 
-      <TooltipChildWrapper
+      <ParentWrapper
         onMouseEnter={() => hoverMode && activate()}
         onMouseLeave={() => hoverMode && deactivate()}
         onClick={() => clickMode && toggleTooltip()}
       >
         {props.children}
-      </TooltipChildWrapper>
+      </ParentWrapper>
     </StyledTooltip>
   )
 }
