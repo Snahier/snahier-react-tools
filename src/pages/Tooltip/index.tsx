@@ -30,13 +30,14 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
 
         <OverflowHiddenWrapper>
           <PopperTooltip
+            arrow
             content={
               <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                test test test
                 <br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                test test test
                 <br />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                test test test
               </div>
             }
           >
