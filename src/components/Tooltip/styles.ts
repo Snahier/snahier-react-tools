@@ -12,14 +12,8 @@ export const StyledTooltip = styled.div`
 export const TooltipChildWrapper = styled.div``
 
 interface ContentProps {
-  position: Position
+  position: "top" | "bottom" | "left" | "right"
   arrow?: boolean
-}
-export enum Position {
-  TOP = "top",
-  BOTTOM = "bottom",
-  LEFT = "left",
-  RIGHT = "right",
 }
 const boxPositions = {
   left: css`

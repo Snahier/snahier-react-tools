@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import {
-  Position,
   StyledTooltip,
   TooltipChildWrapper,
   TooltipContentWrapper,
@@ -8,13 +7,13 @@ import {
 
 interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   clickMode?: boolean
-  position?: Position
+  position?: "top" | "bottom" | "left" | "right"
   arrow?: boolean
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
   clickMode,
-  position = Position.TOP,
+  position = "top",
   arrow,
   ...props
 }) => {
