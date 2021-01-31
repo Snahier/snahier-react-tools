@@ -67,7 +67,6 @@ export const PopperTooltip: React.FC<PopperTooltipProps> = ({
     }
   }, [isOpen, clickMode])
 
-  console.log({ isOpen })
   return (
     <StyledPopperTooltip id="popper" ref={componentRef}>
       <RootElementWrapper
