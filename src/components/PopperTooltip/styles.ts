@@ -8,16 +8,16 @@ interface PopperContainerProps {
   isOpen: boolean
 }
 export const PopperContainer = styled.div<PopperContainerProps>`
-  ${({ isOpen }) => css`
+  ${({ theme, isOpen }) => css`
     ${!isOpen &&
     css`
       visibility: hidden;
       pointer-events: none;
     `}
 
-    background: white;
+    background: ${theme.colors.white};
 
-    color: black;
+    color: ${theme.colors.black};
 
     #arrow {
       position: absolute;
@@ -33,7 +33,7 @@ export const PopperContainer = styled.div<PopperContainerProps>`
         width: 10px;
         height: 10px;
 
-        background-color: white;
+        background-color: ${theme.colors.white};
       }
     }
 
