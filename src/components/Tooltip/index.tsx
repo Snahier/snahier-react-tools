@@ -9,11 +9,13 @@ import {
 interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   clickMode?: boolean
   position?: Position
+  arrow?: boolean
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
   clickMode,
   position = Position.TOP,
+  arrow,
   ...props
 }) => {
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -43,7 +45,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <StyledTooltip {...props} ref={tooltipRef}>
       {isActive && (
-        <TooltipContentWrapper position={position}>
+        <TooltipContentWrapper position={position} arrow={arrow}>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
           <div style={{ width: "max-content" }}>Tooltip content example</div>
