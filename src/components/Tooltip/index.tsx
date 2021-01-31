@@ -54,19 +54,15 @@ export const Tooltip: React.FC<TooltipProps> = ({
     }
   }, [tooltipRef, isActive, contentRect, rootRect])
 
-  const centerVertically =
-    rootRect && contentRect && rootRect.top + rootRect.height / 2
-  const centerHorizontally =
-    rootRect && contentRect && rootRect.left + rootRect.width / 2
+  const centerVertically = rootRect && rootRect.top + rootRect.height / 2
+  const centerHorizontally = rootRect && rootRect.left + rootRect.width / 2
 
   const positionTop =
     rootRect && contentRect && rootRect.top - contentRect.height - 16
-  const positionBottom =
-    rootRect && contentRect && rootRect.top + rootRect.height + 16
+  const positionBottom = rootRect && rootRect.top + rootRect.height + 16
   const positionLeft =
     rootRect && contentRect && rootRect.left - contentRect.width - 16
-  const positionRight =
-    rootRect && contentRect && rootRect.left + rootRect.width + 16
+  const positionRight = rootRect && rootRect.left + rootRect.width + 16
 
   const positions = {
     top: {
