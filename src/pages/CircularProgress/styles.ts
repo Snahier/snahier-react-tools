@@ -12,5 +12,6 @@ export const Content = styled.div`
 export const ContentItem = styled.div`
   display: grid;
   justify-items: center;
+  align-content: start;
   gap: 1rem;
 `

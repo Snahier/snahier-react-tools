@@ -46,10 +46,10 @@ export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
           <h3>Determinate Progress</h3>
           <span>value: {value}%</span>
           <CircularProgress
-            color="primary"
+            color="red"
             variant="determinate"
             value={value}
-            size={150}
+            size={125}
           />
         </ContentItem>
 
@@ -57,7 +57,7 @@ export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
           <h3>Round property</h3>
           <span>value: {value}%</span>
           <CircularProgress
-            color="primary"
+            color="#0000ff"
             variant="determinate"
             size={150}
             value={value}
@@ -68,9 +68,19 @@ export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
         <ContentItem>
           <h3>Indeterminate progress</h3>
           <CircularProgress
-            color="primary"
+            color="rgba(0,256,0, 0.5)"
             variant="indeterminate"
             size={100}
+          />
+        </ContentItem>
+
+        <ContentItem>
+          <h3>Disable shrink</h3>
+          <CircularProgress
+            color="#00ff00"
+            variant="indeterminate"
+            size={100}
+            disableShrink
           />
         </ContentItem>
       </Content>
