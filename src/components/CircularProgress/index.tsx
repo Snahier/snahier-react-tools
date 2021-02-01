@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { Circle, StyledCircularProgress, Svg } from "./styles"
 
 const SIZE = 44
@@ -24,6 +25,8 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
   variant = "indeterminate",
   ...props
 }) => {
+  const [progressValue, setProgressValue] = useState(0)
+
   const circleStyle: React.CSSProperties = {}
   const rootStyle: React.CSSProperties = {}
 
@@ -31,10 +34,16 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
     const circumference = 2 * Math.PI * ((SIZE - thickness) / 2)
     circleStyle.strokeDasharray = circumference.toFixed(3)
     circleStyle.strokeDashoffset = `${(
-      ((100 - value) / 100) *
+      ((100 - progressValue) / 100) *
       circumference
     ).toFixed(3)}px`
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setProgressValue(value)
+    }, 1)
+  }, [value])
 
   return (
     <StyledCircularProgress
