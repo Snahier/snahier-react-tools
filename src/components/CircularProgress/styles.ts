@@ -33,27 +33,17 @@ const variants = {
     animation: ${circularRotate} 1.4s linear infinite;
   `,
 }
-const colors = {
-  primary: css`
-    color: "#0000ff";
-  `,
-  secondary: css`
-    color: "#ff0000";
-  `,
-  inherit: css`
-    color: inherit;
-  `,
-}
+
 interface CircularProgressProps {
   variant: "indeterminate" | "determinate"
-  color: "inherit" | "primary" | "secondary"
+  color: string
 }
 export const StyledCircularProgress = styled.div<CircularProgressProps>`
   ${({ variant = "indeterminate", color = "primary" }) => css`
     display: inline-block;
 
     ${variants[variant]}
-    ${colors[color]}
+    color: ${color};
   `}
 `
 

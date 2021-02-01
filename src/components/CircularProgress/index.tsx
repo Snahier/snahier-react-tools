@@ -6,7 +6,7 @@ const SIZE = 44
 export interface CircularProgressProps {
   classes?: any
   className?: string
-  color?: "inherit" | "primary" | "secondary"
+  color?: string
   disableShrink?: boolean
   size?: number | string
   round?: boolean
@@ -18,7 +18,7 @@ export interface CircularProgressProps {
 export const CircularProgress: React.FC<CircularProgressProps> = ({
   classes,
   className,
-  color = "primary",
+  color = "inherit",
   disableShrink = false,
   size = 40,
   thickness = 3.6,
