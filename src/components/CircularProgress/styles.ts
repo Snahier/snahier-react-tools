@@ -1,10 +1,10 @@
 import styled, { css, keyframes } from "styled-components/macro"
 
 const circularRotate = keyframes`
-  0% {
+  from {
     transform-origin: center;
   }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 `
@@ -68,7 +68,7 @@ const circleVariants = {
     stroke-dashoffset: 0px;
   `,
   determinate: css`
-    animation: stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   `,
 }
 interface CircleProps {
