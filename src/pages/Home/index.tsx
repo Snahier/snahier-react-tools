@@ -22,6 +22,7 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
         <Link to="modal">Modal</Link>
         <Link to="tooltip">Tooltip</Link>
         <Link to="buttons">Buttons</Link>
+        <Link to="circular-progress">Circular Progress</Link>
       </ComponentsList>
     </StyledPageHome>
   )
