@@ -74,12 +74,14 @@ const circleVariants = {
 interface CircleProps {
   variant: "determinate" | "indeterminate"
   disableShrink: boolean
+  round: boolean
 }
 export const Circle = styled.circle<CircleProps>`
-  ${({ variant, disableShrink }) => css`
+  ${({ variant, disableShrink, round }) => css`
     stroke: currentColor;
 
     ${circleVariants[variant]}
     ${disableShrink && "animation: none;"}
+    ${round && "stroke-linecap: round;"}
   `}
 `

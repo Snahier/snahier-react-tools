@@ -9,6 +9,7 @@ export interface CircularProgressProps {
   color?: "inherit" | "primary" | "secondary"
   disableShrink?: boolean
   size?: number | string
+  round?: boolean
   thickness?: number
   value?: number
   variant?: "indeterminate" | "determinate"
@@ -21,6 +22,7 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
   disableShrink = false,
   size = 40,
   thickness = 3.6,
+  round = false,
   value = 0,
   variant = "indeterminate",
   ...props
@@ -57,11 +59,12 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
       <Svg viewBox={`${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`}>
         <Circle
           variant={variant}
+          round={round}
           disableShrink={disableShrink}
-          style={circleStyle}
           cx={SIZE}
           cy={SIZE}
           r={(SIZE - thickness) / 2}
+          style={circleStyle}
           fill="none"
           strokeWidth={thickness}
         />
