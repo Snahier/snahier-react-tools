@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { PageButtons } from "./Buttons"
 import { PageCarouselSlide } from "./CarouselSlide"
 import { PageHome } from "./Home"
 import { PageModal } from "./Modal"
@@ -12,6 +13,7 @@ export const Routes = (props) => {
         <Route path="/carousel-slide" component={PageCarouselSlide} />
         <Route path="/modal" component={PageModal} />
         <Route path="/tooltip" component={PageTooltip} />
+        <Route path="/buttons" component={PageButtons} />
       </Switch>
     </BrowserRouter>
   )
