@@ -6,7 +6,9 @@ import { PageHome } from "./Home"
 import { PageModal } from "./Modal"
 import { PageTooltip } from "./Tooltip"
 
-export const Routes = (props) => {
+interface RoutesProps {}
+
+export const Routes: React.FC<RoutesProps> = (props) => {
   return (
     <BrowserRouter>
       <Switch>
