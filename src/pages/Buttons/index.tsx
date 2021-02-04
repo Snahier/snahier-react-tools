@@ -1,5 +1,6 @@
+import { Button } from "../../components/core/Button"
 import { Header } from "../../components/Header"
-import { StyledPageButtons } from "./styles"
+import { Content, StyledPageButtons } from "./styles"
 
 interface PageButtonsProps {}
 
@@ -8,6 +9,10 @@ export const PageButtons: React.FC<PageButtonsProps> = () => {
     <StyledPageButtons className="page">
       <Header />
       <h2>Buttons</h2>
+
+      <Content>
+        <Button />
+      </Content>
     </StyledPageButtons>
   )
 }
