@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro"
-import { alpha } from "../../styles/helpers/alpha"
+import { alpha } from "../../../styles/helpers/alpha"
 
 export const StyledTooltip = styled.div`
   position: relative;

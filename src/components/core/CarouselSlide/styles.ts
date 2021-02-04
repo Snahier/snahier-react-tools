@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro"
-import { viewport } from "../../styles/helpers/viewport"
+import { viewport } from "../../../styles/helpers/viewport"
 
 export const StyledCarouselSlide = styled.div`
   position: relative;

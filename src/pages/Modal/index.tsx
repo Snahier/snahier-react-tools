@@ -1,6 +1,6 @@
 import { useState } from "react"
+import { Modal } from "../../components/core/Modal"
 import { Header } from "../../components/Header"
-import { Modal } from "../../components/Modal"
 import { StyledPageModal } from "./styles"
 
 interface PageModalProps {}

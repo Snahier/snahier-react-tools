@@ -1,6 +1,6 @@
+import { PopperTooltip } from "../../components/core/PopperTooltip"
+import { Tooltip } from "../../components/core/Tooltip"
 import { Header } from "../../components/Header"
-import { PopperTooltip } from "../../components/PopperTooltip"
-import { Tooltip } from "../../components/Tooltip"
 import {
   ButtonsContainer,
   OverflowHiddenWrapper,

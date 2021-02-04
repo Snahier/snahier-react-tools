@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { CircularProgress } from "../../components/CircularProgress"
+import { CircularProgress } from "../../components/core/CircularProgress"
 import { Header } from "../../components/Header"
 import { randomIntegerBetween } from "../../helpers/randomIntegerBetween"
 import { Content, ContentItem, StyledPageCircularProgress } from "./styles"

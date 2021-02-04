@@ -1,5 +1,5 @@
-import { CarouselSlide } from "../../components/CarouselSlide"
-import { Slide } from "../../components/CarouselSlide/Slide"
+import { CarouselSlide } from "../../components/core/CarouselSlide"
+import { Slide } from "../../components/core/CarouselSlide/Slide"
 import { Header } from "../../components/Header"
 import { StyledPageCarouselSlide } from "./styles"
 
