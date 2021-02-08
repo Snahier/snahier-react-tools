@@ -1,3 +1,4 @@
+import { ShimmerEffect } from "../../components/core/ShimmerEffect"
 import { Header } from "../../components/Header"
 import { StyledPageShimmerEffect } from "./styles"
 
@@ -8,6 +9,8 @@ export const PageShimmerEffect: React.FC<PageShimmerEffectProps> = () => {
     <StyledPageShimmerEffect className="page">
       <Header />
       <h2>Shimmer Effect Component</h2>
+
+      <ShimmerEffect width={500} height={500} />
     </StyledPageShimmerEffect>
   )
 }
