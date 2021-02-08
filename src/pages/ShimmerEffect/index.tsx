@@ -1,6 +1,6 @@
 import { ShimmerEffect } from "../../components/core/ShimmerEffect"
 import { Header } from "../../components/Header"
-import { StyledPageShimmerEffect } from "./styles"
+import { Content, StyledPageShimmerEffect } from "./styles"
 
 interface PageShimmerEffectProps {}
 
@@ -10,7 +10,11 @@ export const PageShimmerEffect: React.FC<PageShimmerEffectProps> = () => {
       <Header />
       <h2>Shimmer Effect Component</h2>
 
-      <ShimmerEffect width={500} height={500} />
+      <Content>
+        <ShimmerEffect width={250} height={250} />
+        <ShimmerEffect width={250} height={250} circle color="lightblue" />
+        <ShimmerEffect width={250} height={250} circle color="lightgreen" />
+      </Content>
     </StyledPageShimmerEffect>
   )
 }
