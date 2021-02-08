@@ -5,6 +5,7 @@ interface ShimmerEffectProps extends React.HTMLAttributes<HTMLDivElement> {
   height?: number | string
   gridArea?: string
   color?: string
+  circle?: boolean
 }
 
 export const ShimmerEffect: React.FC<ShimmerEffectProps> = ({
@@ -12,6 +13,7 @@ export const ShimmerEffect: React.FC<ShimmerEffectProps> = ({
   height = "100%",
   gridArea,
   color = "#d3d3d3",
+  circle = false,
   ...props
 }) => {
   return (
@@ -24,6 +26,7 @@ export const ShimmerEffect: React.FC<ShimmerEffectProps> = ({
         gridArea,
       }}
       color={color}
+      circle={circle}
     >
       <GradientWrapper color={color} />
     </StyledShimmerEffect>

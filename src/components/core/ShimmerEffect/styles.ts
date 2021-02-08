@@ -14,17 +14,25 @@ const animations = {
 
 interface ShimmerEffectProps {
   color: string
+  circle: boolean
 }
 
 export const StyledShimmerEffect = styled.div<ShimmerEffectProps>`
-  ${({ color }) => css`
+  ${({ color, circle }) => css`
     position: relative;
     background-color: ${color};
     overflow: hidden;
+
+    ${circle &&
+    css`
+      border-radius: 100%;
+    `}
   `}
 `
-
-export const GradientWrapper = styled.div<ShimmerEffectProps>`
+interface GradientProps {
+  color: string
+}
+export const GradientWrapper = styled.div<GradientProps>`
   ${({ color }) => {
     return css`
       position: absolute;
