@@ -11,7 +11,8 @@ export const PageButtons: React.FC<PageButtonsProps> = () => {
       <h2>Buttons</h2>
 
       <Content>
-        <Button />
+        <Button>Button component</Button>
+        <Button disabled>Button component</Button>
       </Content>
     </StyledPageButtons>
   )
