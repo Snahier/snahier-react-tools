@@ -3,10 +3,11 @@ import styled, { css } from "styled-components/macro"
 
 interface ButtonProps {
   color: string
+  loading?: boolean
 }
 
 export const StyledButton = styled.button<ButtonProps>`
-  ${({ color }) => css`
+  ${({ color, loading }) => css`
     position: relative;
 
     padding: 0.5rem;
@@ -14,6 +15,7 @@ export const StyledButton = styled.button<ButtonProps>`
     border: none;
     background: ${color};
     cursor: pointer;
+    ${loading && "pointer-events: none;"}
 
     color: ${readableColor(color)};
 

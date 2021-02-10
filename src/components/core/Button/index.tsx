@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   )
 
   return (
-    <StyledButton color={color} {...props}>
+    <StyledButton color={color} loading={loading} {...props}>
       {loading && displayLoader()}
       {children}
     </StyledButton>
