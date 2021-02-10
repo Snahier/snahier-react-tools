@@ -20,6 +20,8 @@ export const StyledButton = styled.button<ButtonProps>`
     }
 
     &:disabled {
+      opacity: 0.75;
+
       background: ${grayscale(color)};
       cursor: not-allowed;
     }
