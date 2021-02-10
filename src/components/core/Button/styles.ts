@@ -1,3 +1,13 @@
-import styled from "styled-components/macro"
+import { readableColor } from "polished"
+import styled, { css } from "styled-components/macro"
 
-export const StyledButton = styled.button``
+interface ButtonProps {
+  color: string
+}
+
+export const StyledButton = styled.button<ButtonProps>`
+  ${({ color }) => css`
+    background: ${color};
+    color: ${readableColor(color)};
+  `}
+`
