@@ -29,6 +29,7 @@ export const StyledButton = styled.button<ButtonProps>`
 
     padding: 0.5rem;
 
+    outline: none;
     border: none;
     background: ${color};
     cursor: pointer;
@@ -49,18 +50,13 @@ export const StyledButton = styled.button<ButtonProps>`
       cursor: not-allowed;
     }
 
-    &:focus {
-      outline: 2px solid ${lighten(0.5, color)};
-      background: ${lighten(0.1, color)};
-    }
-
     span {
       position: absolute;
       transform: translate(-50%, -50%);
 
       pointer-events: none;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: ${readableColor(color)};
 
       animation: ${animations.ripple} 1s linear infinite;
     }
