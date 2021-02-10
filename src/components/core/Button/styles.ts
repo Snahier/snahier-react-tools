@@ -1,4 +1,4 @@
-import { lighten, readableColor } from "polished"
+import { grayscale, lighten, readableColor } from "polished"
 import styled, { css } from "styled-components/macro"
 
 interface ButtonProps {
@@ -16,6 +16,10 @@ export const StyledButton = styled.button<ButtonProps>`
 
     &:hover {
       background: ${lighten(0.1, color)};
+    }
+
+    &:disabled {
+      background: ${grayscale(color)};
     }
   `}
 `
