@@ -7,6 +7,8 @@ interface ButtonProps {
 
 export const StyledButton = styled.button<ButtonProps>`
   ${({ color }) => css`
+    position: relative;
+
     padding: 0.5rem;
 
     border: none;
@@ -32,5 +34,21 @@ export const StyledButton = styled.button<ButtonProps>`
       outline: 2px solid ${lighten(0.5, color)};
       background: ${lighten(0.1, color)};
     }
+  `}
+`
+
+export const LoadWrapper = styled.div<{ color: string }>`
+  ${({ color }) => css`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: ${color};
   `}
 `
