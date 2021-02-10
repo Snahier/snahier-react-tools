@@ -2,15 +2,15 @@ import { grayscale, lighten, readableColor } from "polished"
 import styled, { css, keyframes } from "styled-components/macro"
 
 const animations = {
-  ripple: keyframes`
+  ripple: (width: number) => keyframes`
     0% {
       width: 0;
       height: 0;
       opacity: 0.5;
     }
     100% {
-      width: 500px;
-      height: 500px;
+      width: ${width * 5}px;
+      height: ${width * 5}px;
       opacity: 0;
     }
   `,
@@ -19,10 +19,11 @@ const animations = {
 interface ButtonProps {
   color: string
   load?: boolean
+  width: number
 }
 
 export const StyledButton = styled.button<ButtonProps>`
-  ${({ color, load }) => css`
+  ${({ color, load, width }) => css`
     position: relative;
 
     overflow: hidden;
@@ -58,7 +59,7 @@ export const StyledButton = styled.button<ButtonProps>`
       border-radius: 50%;
       background-color: ${readableColor(color)};
 
-      animation: ${animations.ripple} 1s linear infinite;
+      animation: ${animations.ripple(width)} 1s linear infinite;
     }
   `}
 `

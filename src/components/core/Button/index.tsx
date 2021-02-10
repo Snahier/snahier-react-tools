@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, useRef } from "react"
+import { ButtonHTMLAttributes, useEffect, useRef, useState } from "react"
 import { CircularProgress } from "../CircularProgress"
 import { LoadWrapper, StyledButton } from "./styles"
 
@@ -14,12 +14,19 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const [width, setWidth] = useState(0)
 
-  const displayLoader = () => (
-    <LoadWrapper color={color}>
-      <CircularProgress size="1.5em" />
-    </LoadWrapper>
-  )
+  const getElementSize = () => {
+    if (buttonRef.current) {
+      const { clientWidth } = buttonRef.current
+
+      setWidth(clientWidth)
+    }
+  }
+
+  useEffect(() => {
+    getElementSize()
+  }, [buttonRef.current?.clientWidth])
 
   const handleCreateRipples = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { clientX, clientY } = event
@@ -39,12 +46,19 @@ export const Button: React.FC<ButtonProps> = ({
     }, 1000)
   }
 
+  const displayLoader = () => (
+    <LoadWrapper color={color}>
+      <CircularProgress size="1.5em" />
+    </LoadWrapper>
+  )
+
   return (
     <StyledButton
       {...props}
       ref={buttonRef}
       color={color}
       load={load}
+      width={width}
       onClick={handleCreateRipples}
     >
       {load && displayLoader()}
