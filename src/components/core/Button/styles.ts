@@ -11,6 +11,7 @@ export const StyledButton = styled.button<ButtonProps>`
 
     border: none;
     background: ${color};
+    cursor: pointer;
 
     color: ${readableColor(color)};
 
@@ -20,6 +21,7 @@ export const StyledButton = styled.button<ButtonProps>`
 
     &:disabled {
       background: ${grayscale(color)};
+      cursor: not-allowed;
     }
   `}
 `
