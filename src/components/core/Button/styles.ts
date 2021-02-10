@@ -23,5 +23,10 @@ export const StyledButton = styled.button<ButtonProps>`
       background: ${grayscale(color)};
       cursor: not-allowed;
     }
+
+    &:focus {
+      outline: 2px solid ${lighten(0.5, color)};
+      background: ${lighten(0.1, color)};
+    }
   `}
 `
