@@ -4,12 +4,12 @@ import { LoadWrapper, StyledButton } from "./styles"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string
-  loading?: boolean
+  load?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({
   color = "#00008b",
-  loading,
+  load,
   children,
   ...props
 }) => {
@@ -20,8 +20,8 @@ export const Button: React.FC<ButtonProps> = ({
   )
 
   return (
-    <StyledButton color={color} loading={loading} {...props}>
-      {loading && displayLoader()}
+    <StyledButton {...props} color={color} load={load}>
+      {load && displayLoader()}
       {children}
     </StyledButton>
   )

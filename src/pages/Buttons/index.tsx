@@ -12,7 +12,7 @@ export const PageButtons: React.FC<PageButtonsProps> = () => {
 
       <Content>
         <Button>Button</Button>
-        <Button loading={true}>Loading Button</Button>
+        <Button load>Loading Button</Button>
         <Button disabled>Disabled Button</Button>
       </Content>
     </StyledPageButtons>
