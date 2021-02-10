@@ -15,6 +15,8 @@ export const StyledButton = styled.button<ButtonProps>`
 
     color: ${readableColor(color)};
 
+    transition: 0.3s;
+
     &:hover {
       background: ${lighten(0.1, color)};
     }
