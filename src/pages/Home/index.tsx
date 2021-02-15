@@ -24,6 +24,7 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
         <Link to="buttons">Buttons</Link>
         <Link to="circular-progress">Circular Progress</Link>
         <Link to="shimmer-effect">Shimmer Effect</Link>
+        <Link to="alert">Alert</Link>
       </ComponentsList>
     </StyledPageHome>
   )
