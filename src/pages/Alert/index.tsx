@@ -1,3 +1,5 @@
+import { Info } from "styled-icons/fa-solid"
+import { Alert } from "../../components/core/Alert"
 import { Header } from "../../components/Header"
 import { Main, StyledPageAlert } from "./styles"
 
@@ -9,7 +11,14 @@ export const PageAlert: React.FC<PageAlertProps> = () => {
       <Header />
       <h2>Page Alert Component</h2>
 
-      <Main></Main>
+      <Main>
+        <Alert text="Alert component using the Text prop" />
+        <Alert>Alert component using the children prop</Alert>
+        <Alert closeable>Closeable alert</Alert>
+        <Alert closeable icon={<Info size="1rem" />}>
+          Closeable alert
+        </Alert>
+      </Main>
     </StyledPageAlert>
   )
 }
