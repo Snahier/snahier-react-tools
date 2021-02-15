@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { PageAlert } from "./Alert"
 import { PageButtons } from "./Buttons"
 import { PageCarouselSlide } from "./CarouselSlide"
 import { PageCircularProgress } from "./CircularProgress"
@@ -20,6 +21,7 @@ export const Routes: React.FC<RoutesProps> = (props) => {
         <Route path="/buttons" component={PageButtons} />
         <Route path="/circular-progress" component={PageCircularProgress} />
         <Route path="/shimmer-effect" component={PageShimmerEffect} />
+        <Route path="/alert" component={PageAlert} />
       </Switch>
     </BrowserRouter>
   )
