@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { SelectSpin } from "../../components/core/Inputs/SpinSelect"
 import { Header } from "../../components/Header"
 import { ComponentsList, StyledPageHome } from "./styles"
 
@@ -26,6 +27,21 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
         <Link to="shimmer-effect">Shimmer Effect</Link>
         <Link to="alert">Alert</Link>
       </ComponentsList>
+
+      <div
+        style={{
+          justifySelf: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 100,
+          width: 500,
+          height: 500,
+          background: "lightblue",
+        }}
+      >
+        <SelectSpin />
+      </div>
     </StyledPageHome>
   )
 }
