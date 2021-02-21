@@ -41,11 +41,16 @@ export const Item = styled.div<ItemProps>`
 
       transition: 0.3s;
 
+      ${!selected &&
+      css`
+        opacity: 0.35;
+      `}
+
       width: 100%;
 
       border: 1px solid yellow;
 
-      color: ${selected ? theme.colors.black : "gray"};
+      color: ${theme.colors.black};
     `}
 `
 
