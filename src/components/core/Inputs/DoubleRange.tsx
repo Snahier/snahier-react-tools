@@ -21,17 +21,14 @@ export const DoubleRange: React.FC<DoubleRangeProps> = ({
   const handleSetMin = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMin = Number(event.target.value)
     setFirstValue(newMin)
-
-    onSetValue(
-      Math.min(firstValue, secondValue),
-      Math.max(firstValue, secondValue)
-    )
   }
 
   const handleSetMax = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMax = Number(event.target.value)
     setSecondValue(newMax)
+  }
 
+  const updateValues = () => {
     onSetValue(
       Math.min(firstValue, secondValue),
       Math.max(firstValue, secondValue)
@@ -52,6 +49,8 @@ export const DoubleRange: React.FC<DoubleRangeProps> = ({
           max={max}
           defaultValue={value[0]}
           onChange={handleSetMin}
+          onMouseUp={updateValues}
+          onTouchEnd={updateValues}
         />
       </InputWrapper>
 
@@ -63,6 +62,8 @@ export const DoubleRange: React.FC<DoubleRangeProps> = ({
           max={max}
           defaultValue={value[1]}
           onChange={handleSetMax}
+          onMouseUp={updateValues}
+          onTouchEnd={updateValues}
         />
       </InputWrapper>
     </StyledDoubleRange>
