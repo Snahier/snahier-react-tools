@@ -57,47 +57,6 @@ export const DoubleRange: React.FC<DoubleRangeProps> = ({
         defaultValue={value[1]}
         onChange={handleSetMax}
       />
-
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 250,
-          background: "white",
-          color: "black",
-          fontWeight: "bold",
-        }}
-      >
-        <pre>
-          <p>Valor final</p>
-          <code>{JSON.stringify(value, null, 2)}</code>
-        </pre>
-        <br />
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                min,
-                max,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                firstValue,
-                secondValue,
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
-      </div>
     </StyledDoubleRange>
   )
 }
@@ -117,7 +76,7 @@ const sliderShared = css`
   z-index: 0;
 
   width: 100%;
-  height: 0.25rem;
+  height: 4px;
 
   pointer-events: none;
   outline: none;
@@ -131,8 +90,8 @@ const sliderShared = css`
     appearance: none;
 
     pointer-events: all;
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
 
     cursor: pointer;
     background: green;
