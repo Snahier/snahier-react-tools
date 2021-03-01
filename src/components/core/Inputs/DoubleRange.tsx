@@ -40,40 +40,84 @@ export const DoubleRange: React.FC<DoubleRangeProps> = ({
 
   return (
     <StyledDoubleRange {...props}>
-      <MinInput
-        type="range"
-        name="min"
-        min={min}
-        max={max}
-        defaultValue={value[0]}
-        onChange={handleSetMin}
-      />
+      <StartBall />
+      <RangeLine />
+      <EndBall />
 
-      <MaxInput
-        type="range"
-        name="max"
-        min={min}
-        max={max}
-        defaultValue={value[1]}
-        onChange={handleSetMax}
-      />
+      <InputWrapper>
+        <FirstInput
+          type="range"
+          name="min"
+          min={min}
+          max={max}
+          defaultValue={value[0]}
+          onChange={handleSetMin}
+        />
+      </InputWrapper>
+
+      <InputWrapper>
+        <SecondInput
+          type="range"
+          name="max"
+          min={min}
+          max={max}
+          defaultValue={value[1]}
+          onChange={handleSetMax}
+        />
+      </InputWrapper>
     </StyledDoubleRange>
   )
 }
 
 const StyledDoubleRange = styled.div`
-  padding: 2rem;
+  position: relative;
+
+  display: flex;
+  align-items: center;
 
   width: 15rem;
+  height: 1.25rem;
+`
 
-  background: white;
+const RangeLine = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 1rem;
+  background: red;
+`
+
+const startEndBalls = css`
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 0.5rem;
+  height: 0.5rem;
+
+  border-radius: 100%;
+  background: red;
+`
+
+const StartBall = styled.div`
+  ${startEndBalls}
+`
+
+const EndBall = styled.div`
+  ${startEndBalls}
+  right: 0;
 `
 
 const sliderShared = css`
   appearance: none;
 
   position: relative;
-  z-index: 0;
 
   width: 100%;
   height: 4px;
@@ -81,7 +125,7 @@ const sliderShared = css`
   pointer-events: none;
   outline: none;
   border-radius: 1rem;
-  background: red;
+  background: none;
 
   &::-webkit-slider-thumb {
     position: relative;
@@ -99,32 +143,21 @@ const sliderShared = css`
   }
 `
 
-const startEndBalls = css`
-  content: "";
-
+const InputWrapper = styled.div`
   position: absolute;
-  top: -50%;
 
-  width: 0.5rem;
-  height: 0.5rem;
+  display: flex;
+  align-items: center;
 
-  border-radius: 100%;
-  background: #000;
+  width: 100%;
+
+  pointer-events: none;
 `
 
-const MinInput = styled.input`
+const FirstInput = styled.input`
   ${sliderShared}
-
-  &::before {
-    ${startEndBalls}
-  }
 `
 
-const MaxInput = styled.input`
+const SecondInput = styled.input`
   ${sliderShared}
-
-  &::after {
-    ${startEndBalls}
-    right: 0;
-  }
 `
