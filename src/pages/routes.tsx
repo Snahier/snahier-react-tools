@@ -5,6 +5,7 @@ import { PageCarouselSlide } from "./CarouselSlide"
 import { PageCircularProgress } from "./CircularProgress"
 import { PageHome } from "./Home"
 import { PageModal } from "./Modal"
+import { PageDoubleRange } from "./PageDoubleRange"
 import { PageShimmerEffect } from "./ShimmerEffect"
 import { PageTooltip } from "./Tooltip"
 
@@ -22,6 +23,7 @@ export const Routes: React.FC<RoutesProps> = (props) => {
         <Route path="/circular-progress" component={PageCircularProgress} />
         <Route path="/shimmer-effect" component={PageShimmerEffect} />
         <Route path="/alert" component={PageAlert} />
+        <Route path="/double-range" component={PageDoubleRange} />
       </Switch>
     </BrowserRouter>
   )
