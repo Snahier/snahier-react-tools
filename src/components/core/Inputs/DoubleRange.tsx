@@ -76,7 +76,7 @@ const StyledDoubleRange = styled.div`
   display: flex;
   align-items: center;
 
-  width: 15rem;
+  width: 100%;
   height: 1.25rem;
 `
 
