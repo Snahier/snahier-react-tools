@@ -1,7 +1,7 @@
 import styled from "styled-components/macro"
 import { PopperTooltip } from "../components/core/PopperTooltip"
 import { Tooltip } from "../components/core/Tooltip"
-import { Header } from "../components/pages/Header"
+import { Header } from "../components/templates/Header"
 
 interface PageTooltipProps {}
 

@@ -1,6 +1,6 @@
 import styled from "styled-components/macro"
 import { ShimmerEffect } from "../components/core/ShimmerEffect"
-import { Header } from "../components/pages/Header"
+import { Header } from "../components/templates/Header"
 
 interface PageShimmerEffectProps {}
 

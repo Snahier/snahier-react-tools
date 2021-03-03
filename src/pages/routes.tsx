@@ -1,11 +1,12 @@
+import { PageSpinSelect } from "pages/PageSpinSelect"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { PageAlert } from "./PageAlert"
 import { PageButtons } from "./PageButtons"
 import { PageCarouselSlide } from "./PageCarouselSlide"
 import { PageCircularProgress } from "./PageCircularProgress"
+import { PageDoubleRange } from "./PageDoubleRange"
 import { PageHome } from "./PageHome"
 import { PageModal } from "./PageModal"
-import { PageDoubleRange } from "./PageDoubleRange"
 import { PageShimmerEffect } from "./PageShimmerEffect"
 import { PageTooltip } from "./PageTooltip"
 
@@ -24,6 +25,7 @@ export const Routes: React.FC<RoutesProps> = (props) => {
         <Route path="/shimmer-effect" component={PageShimmerEffect} />
         <Route path="/alert" component={PageAlert} />
         <Route path="/double-range" component={PageDoubleRange} />
+        <Route path="/spin-select" component={PageSpinSelect} />
       </Switch>
     </BrowserRouter>
   )

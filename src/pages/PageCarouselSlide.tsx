@@ -1,7 +1,7 @@
 import styled from "styled-components/macro"
 import { CarouselSlide } from "../components/core/CarouselSlide/CarouselSlide"
 import { Slide } from "../components/core/CarouselSlide/Slide"
-import { Header } from "../components/pages/Header"
+import { Header } from "../components/templates/Header"
 
 interface PageCarouselSlideProps {}
 

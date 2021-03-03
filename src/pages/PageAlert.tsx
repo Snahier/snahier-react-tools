@@ -1,7 +1,7 @@
 import styled from "styled-components/macro"
 import { Info } from "styled-icons/fa-solid"
 import { Alert } from "../components/core/Alert"
-import { Header } from "../components/pages/Header"
+import { Header } from "../components/templates/Header"
 
 interface PageAlertProps {}
 

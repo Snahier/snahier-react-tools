@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components/macro"
 import { CircularProgress } from "../components/core/CircularProgress"
-import { Header } from "../components/pages/Header"
+import { Header } from "../components/templates/Header"
 import { randomIntegerBetween } from "../helpers/randomIntegerBetween"
 
 interface PageCircularProgressProps {}
