@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import { PageAlert } from "./Alert"
-import { PageButtons } from "./Buttons"
-import { PageCarouselSlide } from "./CarouselSlide"
-import { PageCircularProgress } from "./CircularProgress"
-import { PageHome } from "./Home"
-import { PageModal } from "./Modal"
+import { PageAlert } from "./PageAlert"
+import { PageButtons } from "./PageButtons"
+import { PageCarouselSlide } from "./PageCarouselSlide"
+import { PageCircularProgress } from "./PageCircularProgress"
+import { PageHome } from "./PageHome"
+import { PageModal } from "./PageModal"
 import { PageDoubleRange } from "./PageDoubleRange"
-import { PageShimmerEffect } from "./ShimmerEffect"
-import { PageTooltip } from "./Tooltip"
+import { PageShimmerEffect } from "./PageShimmerEffect"
+import { PageTooltip } from "./PageTooltip"
 
 interface RoutesProps {}
 

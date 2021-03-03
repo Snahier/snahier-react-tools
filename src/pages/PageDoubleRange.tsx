@@ -1,5 +1,5 @@
 import { DoubleRange } from "components/core/Inputs/DoubleRange"
-import { Header } from "components/Header"
+import { Header } from "components/pages/Header"
 import { useState } from "react"
 import styled from "styled-components/macro"
 
