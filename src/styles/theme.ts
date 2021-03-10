@@ -8,6 +8,9 @@ export const dark = {
   text: {
     primary: "#ebf2fA",
   },
+  fonts: {
+    proximaNova: "proxima-nova",
+  },
   colors: {
     white: "#ffffff",
     black: "#000000",
