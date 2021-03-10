@@ -28,6 +28,6 @@
     "node_modules"
   ],
   "files": [
-    "src/styles/theme.d.ts"
+    "src/styles/styled.d.ts"
   ]
 }
