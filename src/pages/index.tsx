@@ -1,11 +1,11 @@
+import { Header } from "components/templates/Header"
 import Link from "next/link"
 import styled from "styled-components/macro"
-import { Header } from "../components/templates/Header"
-import { viewport } from "../styles/helpers/viewport"
+import { viewport } from "styles/helpers/viewport"
 
 interface StyledPageHomeProps {}
 
-const Home: React.FC<StyledPageHomeProps> = () => {
+export default function Home() {
   return (
     <StyledPageHome className="page">
       <Header
@@ -45,5 +45,3 @@ const ComponentsList = styled.div`
     grid-template-columns: repeat(6, 1fr);
   }
 `
-
-export default Home
