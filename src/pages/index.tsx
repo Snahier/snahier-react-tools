@@ -5,7 +5,7 @@ import { viewport } from "../styles/helpers/viewport"
 
 interface StyledPageHomeProps {}
 
-export const PageHome: React.FC<StyledPageHomeProps> = () => {
+export const Home: React.FC<StyledPageHomeProps> = () => {
   return (
     <StyledPageHome className="page">
       <Header
