@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+import { Header } from "components/templates/Header"
+import Link from "next/link"
 import styled from "styled-components/macro"
-import { Header } from "../components/templates/Header"
-import { viewport } from "../styles/helpers/viewport"
+import { viewport } from "styles/helpers/viewport"
 
 interface StyledPageHomeProps {}
 
-export const PageHome: React.FC<StyledPageHomeProps> = () => {
+export default function Home() {
   return (
     <StyledPageHome className="page">
       <Header
@@ -13,21 +13,18 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
           gridArea: "header",
         }}
       />
-
       <h2>Homepage</h2>
-
       <h3>Available Components</h3>
-
       <ComponentsList>
-        <Link to="carousel-slide">Carousel Slide</Link>
-        <Link to="modal">Modal</Link>
-        <Link to="tooltip">Tooltip</Link>
-        <Link to="buttons">Buttons</Link>
-        <Link to="circular-progress">Circular Progress</Link>
-        <Link to="shimmer-effect">Shimmer Effect</Link>
-        <Link to="alert">Alert</Link>
-        <Link to="double-range">Double Range</Link>
-        <Link to="spin-select">Spin Select</Link>
+        <Link href="carousel-slide">Carousel Slide</Link>
+        <Link href="modal">Modal</Link>
+        <Link href="tooltip">Tooltip</Link>
+        <Link href="buttons">Buttons</Link>
+        <Link href="circular-progress">Circular Progress</Link>
+        <Link href="shimmer-effect">Shimmer Effect</Link>
+        <Link href="alert">Alert</Link>
+        <Link href="double-range">Double Range</Link>
+        <Link href="spin-select">Spin Select</Link>
       </ComponentsList>
     </StyledPageHome>
   )

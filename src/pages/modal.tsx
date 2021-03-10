@@ -5,7 +5,7 @@ import { Header } from "../components/templates/Header"
 
 interface PageModalProps {}
 
-export const PageModal: React.FC<PageModalProps> = () => {
+export default function PageModal({ ...props }: PageModalProps) {
   const [isModalOneOpen, setIsModalOneOpen] = useState(false)
   const handleCloseModalOne = () => setIsModalOneOpen(false)
   const handleOpenModalOne = () => setIsModalOneOpen(true)

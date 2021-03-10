@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import styled, { css } from "styled-components/macro"
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -6,7 +6,7 @@ export const Header: React.FC<HeaderProps> = () => {
   return (
     <StyledHeader>
       <h1>Snahier's component library</h1>
-      <Link to="/">Return to home</Link>
+      <Link href="/">Return to home</Link>
     </StyledHeader>
   )
 }

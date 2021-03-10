@@ -5,7 +5,7 @@ import { Header } from "../components/templates/Header"
 
 interface PageTooltipProps {}
 
-export const PageTooltip: React.FC<PageTooltipProps> = () => {
+export default function PageTooltip({ ...props }: PageTooltipProps) {
   return (
     <StyledPageTooltip className="page">
       <Header />
@@ -35,8 +35,7 @@ export const PageTooltip: React.FC<PageTooltipProps> = () => {
                 <br />
                 test test test
               </div>
-            }
-          >
+            }>
             <button>tooltip</button>
           </PopperTooltip>
         </OverflowHiddenWrapper>

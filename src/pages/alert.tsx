@@ -5,7 +5,7 @@ import { Header } from "../components/templates/Header"
 
 interface PageAlertProps {}
 
-export const PageAlert: React.FC<PageAlertProps> = () => {
+export default function PageAlert({ ...props }: PageAlertProps) {
   return (
     <StyledPageAlert className="page">
       <Header />

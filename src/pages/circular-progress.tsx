@@ -6,7 +6,7 @@ import { randomIntegerBetween } from "../helpers/randomIntegerBetween"
 
 interface PageCircularProgressProps {}
 
-export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
+export default function PageCircularProgress({ ...props }: PageCircularProgressProps) {
   const [value, setValue] = useState(50)
 
   useEffect(() => {
@@ -103,3 +103,4 @@ const ContentItem = styled.div`
   align-content: start;
   gap: 1rem;
 `
+

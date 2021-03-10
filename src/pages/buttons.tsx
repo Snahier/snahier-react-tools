@@ -4,7 +4,7 @@ import { Header } from "../components/templates/Header"
 
 interface PageButtonsProps {}
 
-export const PageButtons: React.FC<PageButtonsProps> = () => {
+export default function PageButtons({ ...props }: PageButtonsProps) {
   return (
     <StyledPageButtons className="page">
       <Header />
