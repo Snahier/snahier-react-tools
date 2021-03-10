@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import styled from "styled-components/macro"
 import { Header } from "../components/templates/Header"
 import { viewport } from "../styles/helpers/viewport"
 
 interface StyledPageHomeProps {}
 
-export const Home: React.FC<StyledPageHomeProps> = () => {
+const Home: React.FC<StyledPageHomeProps> = () => {
   return (
     <StyledPageHome className="page">
       <Header
@@ -19,15 +19,15 @@ export const Home: React.FC<StyledPageHomeProps> = () => {
       <h3>Available Components</h3>
 
       <ComponentsList>
-        <Link to="carousel-slide">Carousel Slide</Link>
-        <Link to="modal">Modal</Link>
-        <Link to="tooltip">Tooltip</Link>
-        <Link to="buttons">Buttons</Link>
-        <Link to="circular-progress">Circular Progress</Link>
-        <Link to="shimmer-effect">Shimmer Effect</Link>
-        <Link to="alert">Alert</Link>
-        <Link to="double-range">Double Range</Link>
-        <Link to="spin-select">Spin Select</Link>
+        <Link href="carousel-slide">Carousel Slide</Link>
+        <Link href="modal">Modal</Link>
+        <Link href="tooltip">Tooltip</Link>
+        <Link href="buttons">Buttons</Link>
+        <Link href="circular-progress">Circular Progress</Link>
+        <Link href="shimmer-effect">Shimmer Effect</Link>
+        <Link href="alert">Alert</Link>
+        <Link href="double-range">Double Range</Link>
+        <Link href="spin-select">Spin Select</Link>
       </ComponentsList>
     </StyledPageHome>
   )
@@ -48,3 +48,5 @@ const ComponentsList = styled.div`
     grid-template-columns: repeat(6, 1fr);
   }
 `
+
+export default Home
