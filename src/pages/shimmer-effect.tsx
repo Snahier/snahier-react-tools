@@ -4,7 +4,9 @@ import { Header } from "../components/templates/Header"
 
 interface PageShimmerEffectProps {}
 
-export const PageShimmerEffect: React.FC<PageShimmerEffectProps> = () => {
+export default function PageShimmerEffect({
+  ...props
+}: PageShimmerEffectProps) {
   return (
     <StyledPageShimmerEffect className="page">
       <Header />

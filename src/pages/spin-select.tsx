@@ -4,7 +4,7 @@ import styled from "styled-components/macro"
 
 interface PageSpinSelectProps {}
 
-export const PageSpinSelect: React.FC<PageSpinSelectProps> = ({ ...props }) => {
+export default function PageSpinSelect({ ...props }: PageSpinSelectProps) {
   const options = [
     { label: "Jan", value: 1 },
     { label: "Feb", value: 2 },
@@ -29,8 +29,7 @@ export const PageSpinSelect: React.FC<PageSpinSelectProps> = ({ ...props }) => {
           display: "flex",
           justifySelf: "center",
           gap: "1rem",
-        }}
-      >
+        }}>
         <div
           style={{
             justifySelf: "center",
@@ -42,8 +41,7 @@ export const PageSpinSelect: React.FC<PageSpinSelectProps> = ({ ...props }) => {
             width: 400,
             height: 600,
             background: "lightblue",
-          }}
-        >
+          }}>
           <SelectSpin options={options} />
         </div>
 
@@ -58,8 +56,7 @@ export const PageSpinSelect: React.FC<PageSpinSelectProps> = ({ ...props }) => {
             width: 500,
             height: 500,
             background: "lightblue",
-          }}
-        >
+          }}>
           <SelectSpin infiniteScroll options={options} />
         </div>
       </div>

@@ -5,7 +5,9 @@ import { Header } from "../components/templates/Header"
 
 interface PageCarouselSlideProps {}
 
-export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
+export default function PageCarouselSlide({
+  ...props
+}: PageCarouselSlideProps) {
   return (
     <StyledPageCarouselSlide className="page">
       <Header />
@@ -19,8 +21,7 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
         }}
         style={{
           maxHeight: "300px",
-        }}
-      >
+        }}>
         <Slide>
           <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>
@@ -35,8 +36,7 @@ export const PageCarouselSlide: React.FC<PageCarouselSlideProps> = () => {
       <CarouselSlide
         style={{
           maxHeight: "300px",
-        }}
-      >
+        }}>
         <Slide>
           <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>

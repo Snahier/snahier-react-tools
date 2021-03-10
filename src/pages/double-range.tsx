@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 
 interface PageDoubleRangeProps {}
 
-export const PageDoubleRange: React.FC<PageDoubleRangeProps> = () => {
+export default function PageDoubleRange({ ...props }: PageDoubleRangeProps) {
   const [range, setRange] = useState({
     min: 0,
     max: 100,
@@ -35,3 +35,5 @@ export const PageDoubleRange: React.FC<PageDoubleRangeProps> = () => {
 }
 
 const StyledPageDoubleRange = styled.div``
+
+
