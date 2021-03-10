@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import styled, { css } from "styled-components/macro"
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
