@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
       gap: 1rem;
       grid-auto-rows: max-content;
 
-      height: 100%;
+      height: 100vh;
 
       background-color: ${theme.background.primary};
 
