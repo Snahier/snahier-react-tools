@@ -13,11 +13,8 @@ const Home: React.FC<StyledPageHomeProps> = () => {
           gridArea: "header",
         }}
       />
-
       <h2>Homepage</h2>
-
       <h3>Available Components</h3>
-
       <ComponentsList>
         <Link href="carousel-slide">Carousel Slide</Link>
         <Link href="modal">Modal</Link>
