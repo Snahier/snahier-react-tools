@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom"
 import styled, { css } from "styled-components/macro"
 
 interface ModalProps {
@@ -9,15 +10,18 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({ opacity = 20, ...props }) => {
   const opacityPercentageInDecimals = opacity / 100
 
-  return props.open ? (
-    <StyledModal>
-      <BackgroundBox
-        opacity={opacityPercentageInDecimals}
-        onClick={() => props.onClose()}
-      />
-      <ModalContent>{props.children}</ModalContent>
-    </StyledModal>
-  ) : null
+  return props.open
+    ? ReactDOM.createPortal(
+        <StyledModal>
+          <BackgroundBox
+            opacity={opacityPercentageInDecimals}
+            onClick={() => props.onClose()}
+          />
+          <ModalContent>{props.children}</ModalContent>
+        </StyledModal>,
+        document.body
+      )
+    : null
 }
 
 const StyledModal = styled.div``

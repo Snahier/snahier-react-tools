@@ -6,15 +6,13 @@ import { Header } from "../components/templates/Header"
 interface PageModalProps {}
 
 export const PageModal: React.FC<PageModalProps> = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isModalOneOpen, setIsModalOneOpen] = useState(false)
+  const handleCloseModalOne = () => setIsModalOneOpen(false)
+  const handleOpenModalOne = () => setIsModalOneOpen(true)
 
-  function handleCloseModal() {
-    setIsOpen(false)
-  }
-
-  function handleOpenModal() {
-    setIsOpen(true)
-  }
+  const [isModalTwoOpen, setIsModalTwoOpen] = useState(false)
+  const handleCloseModalTwo = () => setIsModalTwoOpen(false)
+  const handleOpenModalTwo = () => setIsModalTwoOpen(true)
 
   return (
     <StyledPageModal className="page">
@@ -50,32 +48,47 @@ export const PageModal: React.FC<PageModalProps> = () => {
         <strong>top, bottom, left or right</strong>
       </p>
 
-      <button
-        style={{
-          width: "fit-content",
-        }}
-        onClick={handleOpenModal}
-      >
-        open modal button
-      </button>
+      <OpenModalButton onClick={handleOpenModalOne}>
+        Open modal 1
+      </OpenModalButton>
 
-      <Modal open={isOpen} onClose={handleCloseModal}>
-        <div
+      <Modal open={isModalOneOpen} onClose={handleCloseModalOne}>
+        <ModalContent
           style={{
-            position: "fixed",
-            top: "50%",
+            bottom: "0%",
             right: "0%",
-            width: 640,
-            height: 480,
             background: "#fff",
-            color: "#000",
-          }}
-        >
-          Custom element as modal child
-        </div>
+          }}>
+          Modal one custom child{" "}
+          <OpenModalButton onClick={handleOpenModalTwo}>
+            Open modal 2
+          </OpenModalButton>
+        </ModalContent>
+      </Modal>
+
+      <Modal open={isModalTwoOpen} onClose={handleCloseModalTwo}>
+        <ModalContent
+          style={{
+            bottom: "25%",
+            right: "10%",
+            background: "#ddd",
+          }}>
+          Modal two custom child
+        </ModalContent>
       </Modal>
     </StyledPageModal>
   )
 }
 
 const StyledPageModal = styled.div``
+
+const OpenModalButton = styled.button`
+  width: fit-content;
+`
+
+const ModalContent = styled.div`
+  position: fixed;
+  width: 640px;
+  height: 480px;
+  color: #000;
+`
