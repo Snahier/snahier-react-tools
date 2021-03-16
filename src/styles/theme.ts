@@ -1,4 +1,23 @@
-export const dark = {
+interface ThemeProps {
+  name: string
+
+  background: {
+    primary: string
+    secondary: string
+  }
+  text: {
+    primary: string
+  }
+  fonts: {
+    proximaNova: string
+  }
+  colors: {
+    white: string
+    black: string
+  }
+}
+
+export const dark: ThemeProps = {
   name: "dark",
 
   background: {
