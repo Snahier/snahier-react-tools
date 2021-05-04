@@ -1,4 +1,5 @@
 import { PopperPortal } from "components/core/Popper/PopperPortal"
+import { PopperPortalWrapper } from "components/core/Popper/PopperPortalWrapper"
 import { PopperTooltip } from "components/core/Popper/PopperTooltip"
 import { useRef } from "react"
 import styled from "styled-components/macro"
@@ -39,7 +40,8 @@ export default function PageTooltip({ ...props }: PageTooltipProps) {
                 <br />
                 test test test
               </div>
-            }>
+            }
+          >
             <button>tooltip</button>
           </PopperTooltip>
         </OverflowHiddenWrapper>
@@ -48,7 +50,15 @@ export default function PageTooltip({ ...props }: PageTooltipProps) {
           <PopperPortal targetRef={buttonRef}>
             <CustomTooltip>Portal Popper</CustomTooltip>
           </PopperPortal>
-          <button ref={buttonRef}>tooltip with portal</button>
+          <button ref={buttonRef}>tooltip with portal using ref</button>
+        </OverflowHiddenWrapper>
+
+        <OverflowHiddenWrapper>
+          <PopperPortalWrapper
+            content={<CustomTooltip>Portal Popper</CustomTooltip>}
+          >
+            <button>tooltip with portal using wrapper</button>
+          </PopperPortalWrapper>
         </OverflowHiddenWrapper>
       </ButtonsContainer>
     </StyledPageTooltip>
@@ -59,8 +69,8 @@ const StyledPageTooltip = styled.div``
 
 const ButtonsContainer = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 0;
   justify-items: center;
 `
 

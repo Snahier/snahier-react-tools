@@ -4,27 +4,25 @@ import { createPortal } from "react-dom"
 import { usePopper } from "react-popper"
 import styled, { css } from "styled-components"
 
-type PopperPortalProps = {
-  targetRef: React.RefObject<any>
+interface PopperPortalWrapperProps {
   placement?: Placement
   offset?: [number, number]
-
   clickMode?: boolean
-
   arrow?: boolean
 
+  content: React.ReactNode
   children: React.ReactNode
 }
 
-export const PopperPortal: React.FC<PopperPortalProps> = ({
-  targetRef,
+export const PopperPortalWrapper = ({
   placement,
   offset = [0, 0],
   clickMode = false,
   arrow = false,
+  content,
   children,
   ...props
-}) => {
+}: PopperPortalWrapperProps) => {
   // SSR related logic
   const [isMounted, setIsMounted] = useState(false)
   useEffect(() => {
@@ -33,6 +31,7 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
   }, [])
 
   // Popper related logic
+  const targetRef = useRef<HTMLDivElement>(null)
   const popperRef = useRef<HTMLDivElement>(null)
   const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>()
   const { styles, attributes } = usePopper(
@@ -63,17 +62,6 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
   // Popper logic
   const hoverMode = !clickMode
 
-  // Toggle popper logic
-  useEffect(() => {
-    if (targetRef && targetRef.current && clickMode) {
-      const target = targetRef.current
-
-      targetRef.current.addEventListener("click", togglePopper)
-
-      return () => target.removeEventListener("click", togglePopper)
-    }
-  }, [clickMode, targetRef])
-
   // Toggle off on click outside popper
   useEffect(() => {
     if (clickMode) {
@@ -95,43 +83,59 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
     }
   }, [clickMode, isOpen])
 
-  // Toggle on or off on hover
-  useEffect(() => {
-    if (targetRef && targetRef.current && hoverMode) {
-      const target = targetRef.current
+  return isMounted ? (
+    <StyledPopperPortalWrapper {...props}>
+      <Target
+        ref={targetRef}
+        onClick={() => clickMode && togglePopper()}
+        onMouseEnter={() => hoverMode && activatePopper()}
+        onMouseLeave={() => hoverMode && deactivatePopper()}
+      >
+        {children}
+      </Target>
+      {isOpen &&
+        createPortal(
+          <PopperWrapper
+            ref={popperRef}
+            style={styles.popper}
+            {...attributes.popper}
+          >
+            {content}
 
-      targetRef.current.addEventListener("mouseenter", activatePopper)
-      targetRef.current.addEventListener("mouseleave", deactivatePopper)
-
-      return () => {
-        target.removeEventListener("mouseenter", activatePopper)
-        target.removeEventListener("mouseleave", deactivatePopper)
-      }
-    }
-  }, [hoverMode, targetRef])
-
-  return isMounted && isOpen ? (
-    <StyledPopperPortal {...props}>
-      {createPortal(
-        <PopperWrapper
-          ref={popperRef}
-          style={styles.popper}
-          {...attributes.popper}
-        >
-          {children}
-
-          <Arrow
-            disabled={!arrow}
-            ref={setArrowElement}
-            style={styles.arrow}
-            data-popper-arrow
-          />
-        </PopperWrapper>,
-        document.body
-      )}
-    </StyledPopperPortal>
+            <Arrow
+              disabled={!arrow}
+              ref={setArrowElement}
+              style={styles.arrow}
+              data-popper-arrow
+            />
+          </PopperWrapper>,
+          document.body
+        )}
+    </StyledPopperPortalWrapper>
   ) : null
 }
+
+const StyledPopperPortalWrapper = styled.div``
+
+const Target = styled.div``
+
+const PopperWrapper = styled.div`
+  &[data-popper-placement^="top"] > [data-popper-arrow] {
+    bottom: 0;
+  }
+
+  &[data-popper-placement^="bottom"] > [data-popper-arrow] {
+    top: 0;
+  }
+
+  &[data-popper-placement^="left"] > [data-popper-arrow] {
+    right: 0;
+  }
+
+  &[data-popper-placement^="right"] > [data-popper-arrow] {
+    left: 0;
+  }
+`
 
 type ArrowProps = {
   disabled: boolean
@@ -161,23 +165,3 @@ const Arrow = styled.div<ArrowProps>`
     }
   `}
 `
-
-const PopperWrapper = styled.div`
-  &[data-popper-placement^="top"] > [data-popper-arrow] {
-    bottom: 0;
-  }
-
-  &[data-popper-placement^="bottom"] > [data-popper-arrow] {
-    top: 0;
-  }
-
-  &[data-popper-placement^="left"] > [data-popper-arrow] {
-    right: 0;
-  }
-
-  &[data-popper-placement^="right"] > [data-popper-arrow] {
-    left: 0;
-  }
-`
-
-const StyledPopperPortal = styled.div``
