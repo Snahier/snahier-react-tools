@@ -1,4 +1,4 @@
-import { PopperPortal } from "PopperPortal"
+import { PopperPortal } from "components/core/PopperPortal"
 import { useRef } from "react"
 import styled from "styled-components/macro"
 import { PopperTooltip } from "../components/core/PopperTooltip"
