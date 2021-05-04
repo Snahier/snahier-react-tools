@@ -2,7 +2,7 @@ import { Placement } from "@popperjs/core"
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { usePopper } from "react-popper"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 type PopperPortalProps = {
   targetRef: React.RefObject<any>
@@ -21,7 +21,7 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
   placement,
   offset = [0, 0],
   clickMode = false,
-  arrow,
+  arrow = false,
   children,
   ...props
 }) => {
@@ -118,13 +118,13 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
           style={styles.popper}
           {...attributes.popper}>
           {children}
-          {arrow && (
-            <Arrow
-              ref={setArrowElement}
-              style={styles.arrow}
-              data-popper-arrow
-            />
-          )}
+
+          <Arrow
+            disabled={!arrow}
+            ref={setArrowElement}
+            style={styles.arrow}
+            data-popper-arrow
+          />
         </PopperWrapper>,
         document.body
       )}
@@ -132,26 +132,33 @@ export const PopperPortal: React.FC<PopperPortalProps> = ({
   ) : null
 }
 
-const Arrow = styled.div`
-  position: absolute;
-  z-index: -1;
-
-  &::before {
-    content: "";
+type ArrowProps = {
+  disabled: boolean
+}
+const Arrow = styled.div<ArrowProps>`
+  ${({ disabled }) => css`
     position: absolute;
-    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: -1;
 
-    pointer-events: none;
+    opacity: ${disabled ? 0 : 1};
 
-    width: 0;
-    height: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(45deg);
 
-    background: #fff;
-  }
+      pointer-events: none;
 
-  &::before {
-    border: 4px solid transparent;
-  }
+      width: 0;
+      height: 0;
+
+      background: #fff;
+    }
+
+    &::before {
+      border: 4px solid transparent;
+    }
+  `}
 `
 
 const PopperWrapper = styled.div`
