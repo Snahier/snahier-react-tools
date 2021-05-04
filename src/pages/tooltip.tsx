@@ -1,7 +1,7 @@
-import { PopperPortal } from "components/core/PopperPortal"
+import { PopperPortal } from "components/core/Popper/PopperPortal"
+import { PopperTooltip } from "components/core/Popper/PopperTooltip"
 import { useRef } from "react"
 import styled from "styled-components/macro"
-import { PopperTooltip } from "../components/core/PopperTooltip"
 import { Tooltip } from "../components/core/Tooltip"
 import { Header } from "../components/templates/Header"
 
