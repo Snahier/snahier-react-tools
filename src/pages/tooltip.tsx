@@ -1,3 +1,5 @@
+import { PopperPortal } from "PopperPortal"
+import { useRef } from "react"
 import styled from "styled-components/macro"
 import { PopperTooltip } from "../components/core/PopperTooltip"
 import { Tooltip } from "../components/core/Tooltip"
@@ -6,6 +8,8 @@ import { Header } from "../components/templates/Header"
 interface PageTooltipProps {}
 
 export default function PageTooltip({ ...props }: PageTooltipProps) {
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
   return (
     <StyledPageTooltip className="page">
       <Header />
@@ -38,6 +42,13 @@ export default function PageTooltip({ ...props }: PageTooltipProps) {
             }>
             <button>tooltip</button>
           </PopperTooltip>
+        </OverflowHiddenWrapper>
+
+        <OverflowHiddenWrapper>
+          <PopperPortal targetRef={buttonRef}>
+            <div>testing popper portal</div>
+          </PopperPortal>
+          <button ref={buttonRef}>tooltip with portal</button>
         </OverflowHiddenWrapper>
       </ButtonsContainer>
     </StyledPageTooltip>
