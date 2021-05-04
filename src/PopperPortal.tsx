@@ -11,17 +11,20 @@ type PopperPortalProps = {
 
   clickMode?: boolean
 
+  arrow?: boolean
+
   children: React.ReactNode
 }
 
-export const PopperPortal = ({
+export const PopperPortal: React.FC<PopperPortalProps> = ({
   targetRef,
   placement,
   offset = [0, 0],
   clickMode = false,
+  arrow,
   children,
   ...props
-}: PopperPortalProps) => {
+}) => {
   // SSR related logic
   const [isMounted, setIsMounted] = useState(false)
   useEffect(() => {
@@ -37,7 +40,10 @@ export const PopperPortal = ({
     popperRef.current,
     {
       modifiers: [
-        { name: "arrow", options: { element: arrowElement } },
+        {
+          name: "arrow",
+          options: { element: arrowElement },
+        },
         {
           name: "offset",
           options: { offset },
@@ -54,32 +60,42 @@ export const PopperPortal = ({
   const activatePopper = () => setIsOpen(true)
   const deactivatePopper = () => setIsOpen(false)
 
-  // Open and close logic
+  // Popper logic
   const hoverMode = !clickMode
 
+  // Toggle popper logic
   useEffect(() => {
     if (targetRef && targetRef.current && clickMode) {
       const target = targetRef.current
 
       targetRef.current.addEventListener("click", togglePopper)
+
       return () => target.removeEventListener("click", togglePopper)
     }
   }, [clickMode, targetRef])
 
-  // useEffect(() => {
-  //   const deactivateOnOutsideClick = (event: MouseEvent) => {
-  //     !popperRef.current?.contains(event.target as Node) && deactivatePopper()
-  //   }
+  // Toggle off on click outside popper
+  useEffect(() => {
+    if (clickMode) {
+      const deactivateOnOutsideClick = (event: MouseEvent) => {
+        !popperRef.current?.contains(event.target as Node) && deactivatePopper()
+      }
 
-  //   clickMode && isOpen
-  //     ? document.addEventListener("click", deactivateOnOutsideClick)
-  //     : document.removeEventListener("click", deactivateOnOutsideClick)
+      if (isOpen) {
+        setTimeout(() => {
+          document.addEventListener("click", deactivateOnOutsideClick)
+        }, 1)
+      } else {
+        document.removeEventListener("click", deactivateOnOutsideClick)
+      }
 
-  //   return () => {
-  //     document.removeEventListener("click", deactivateOnOutsideClick)
-  //   }
-  // }, [clickMode, isOpen])
+      return () => {
+        document.removeEventListener("click", deactivateOnOutsideClick)
+      }
+    }
+  }, [clickMode, isOpen])
 
+  // Toggle on or off on hover
   useEffect(() => {
     if (targetRef && targetRef.current && hoverMode) {
       const target = targetRef.current
@@ -97,14 +113,63 @@ export const PopperPortal = ({
   return isMounted && isOpen ? (
     <StyledPopperPortal {...props}>
       {createPortal(
-        <div ref={popperRef} style={styles.popper} {...attributes.popper}>
+        <PopperWrapper
+          ref={popperRef}
+          style={styles.popper}
+          {...attributes.popper}>
           {children}
-          <div ref={setArrowElement} style={styles.arrow} />
-        </div>,
+          {arrow && (
+            <Arrow
+              ref={setArrowElement}
+              style={styles.arrow}
+              data-popper-arrow
+            />
+          )}
+        </PopperWrapper>,
         document.body
       )}
     </StyledPopperPortal>
   ) : null
 }
+
+const Arrow = styled.div`
+  position: absolute;
+  z-index: -1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    pointer-events: none;
+
+    width: 0;
+    height: 0;
+
+    background: #fff;
+  }
+
+  &::before {
+    border: 4px solid transparent;
+  }
+`
+
+const PopperWrapper = styled.div`
+  &[data-popper-placement^="top"] > [data-popper-arrow] {
+    bottom: 0;
+  }
+
+  &[data-popper-placement^="bottom"] > [data-popper-arrow] {
+    top: 0;
+  }
+
+  &[data-popper-placement^="left"] > [data-popper-arrow] {
+    right: 0;
+  }
+
+  &[data-popper-placement^="right"] > [data-popper-arrow] {
+    left: 0;
+  }
+`
 
 const StyledPopperPortal = styled.div``
