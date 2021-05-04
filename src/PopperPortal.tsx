@@ -18,6 +18,7 @@ export const PopperPortal = ({
   targetRef,
   placement,
   offset = [0, 0],
+  clickMode = false,
   children,
   ...props
 }: PopperPortalProps) => {
@@ -29,7 +30,7 @@ export const PopperPortal = ({
   }, [])
 
   // Popper related logic
-  const popperRef = useRef(null)
+  const popperRef = useRef<HTMLDivElement>(null)
   const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>()
   const { styles, attributes } = usePopper(
     targetRef.current,
@@ -50,16 +51,48 @@ export const PopperPortal = ({
   const [isOpen, setIsOpen] = useState(false)
 
   const togglePopper = () => setIsOpen((prev) => !prev)
+  const activatePopper = () => setIsOpen(true)
+  const deactivatePopper = () => setIsOpen(false)
 
   // Open and close logic
+  const hoverMode = !clickMode
+
   useEffect(() => {
-    if (targetRef && targetRef.current) {
+    if (targetRef && targetRef.current && clickMode) {
       const target = targetRef.current
 
       targetRef.current.addEventListener("click", togglePopper)
       return () => target.removeEventListener("click", togglePopper)
     }
-  }, [targetRef])
+  }, [clickMode, targetRef])
+
+  // useEffect(() => {
+  //   const deactivateOnOutsideClick = (event: MouseEvent) => {
+  //     !popperRef.current?.contains(event.target as Node) && deactivatePopper()
+  //   }
+
+  //   clickMode && isOpen
+  //     ? document.addEventListener("click", deactivateOnOutsideClick)
+  //     : document.removeEventListener("click", deactivateOnOutsideClick)
+
+  //   return () => {
+  //     document.removeEventListener("click", deactivateOnOutsideClick)
+  //   }
+  // }, [clickMode, isOpen])
+
+  useEffect(() => {
+    if (targetRef && targetRef.current && hoverMode) {
+      const target = targetRef.current
+
+      targetRef.current.addEventListener("mouseenter", activatePopper)
+      targetRef.current.addEventListener("mouseleave", deactivatePopper)
+
+      return () => {
+        target.removeEventListener("mouseenter", activatePopper)
+        target.removeEventListener("mouseleave", deactivatePopper)
+      }
+    }
+  }, [hoverMode, targetRef])
 
   return isMounted && isOpen ? (
     <StyledPopperPortal {...props}>

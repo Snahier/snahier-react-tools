@@ -46,7 +46,7 @@ export default function PageTooltip({ ...props }: PageTooltipProps) {
 
         <OverflowHiddenWrapper>
           <PopperPortal targetRef={buttonRef}>
-            <div>testing popper portal</div>
+            <CustomTooltip>Portal Popper</CustomTooltip>
           </PopperPortal>
           <button ref={buttonRef}>tooltip with portal</button>
         </OverflowHiddenWrapper>
@@ -69,4 +69,11 @@ const OverflowHiddenWrapper = styled.div`
   overflow: hidden;
 
   background-color: crimson;
+`
+
+const CustomTooltip = styled.div`
+  width: 200px;
+  height: 2rem;
+
+  background: #fff;
 `
