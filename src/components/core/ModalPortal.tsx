@@ -86,7 +86,7 @@ const Background = styled.div<BackgroundProps>`
 `
 
 const Content = styled.div`
-  position: fixed !important;
+  position: fixed;
   top: 0;
   left: 0;
 `
