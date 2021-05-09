@@ -14,6 +14,7 @@ interface ModalPortalProps {
   onClose: any
   content: React.ReactNode
   position: Position
+  backdropBlur?: number
 }
 
 export const ModalPortal = ({
@@ -21,6 +22,7 @@ export const ModalPortal = ({
   onClose,
   content,
   position,
+  backdropBlur,
   ...props
 }: ModalPortalProps) => {
   const [amountOfModals, setAmountOfModals] = useState(0)
@@ -38,7 +40,7 @@ export const ModalPortal = ({
           className="component-ModalPortal"
           amountOfModals={amountOfModals}
         >
-          <Background onClick={onClose} />
+          <Background onClick={onClose} backdropBlur={backdropBlur} />
           <Content
             style={{
               top: position.top,
@@ -66,14 +68,21 @@ const StyledModalPortal = styled.div<StyledModalPortalProps>`
   `}
 `
 
-const Background = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+type BackgroundProps = {
+  backdropBlur: number | undefined
+}
+const Background = styled.div<BackgroundProps>`
+  ${({ backdropBlur }) => css`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
-  background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+
+    ${backdropBlur && `backdrop-filter: blur(${backdropBlur}px);`}
+  `}
 `
 
 const Content = styled.div`
