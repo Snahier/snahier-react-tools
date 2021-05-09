@@ -3,8 +3,6 @@ import Link from "next/link"
 import styled from "styled-components/macro"
 import { viewport } from "styles/helpers/viewport"
 
-interface StyledPageHomeProps {}
-
 export default function Home() {
   return (
     <StyledPageHome className="page">
@@ -24,7 +22,6 @@ export default function Home() {
         <Link href="shimmer-effect">Shimmer Effect</Link>
         <Link href="alert">Alert</Link>
         <Link href="double-range">Double Range</Link>
-        <Link href="spin-select">Spin Select</Link>
       </ComponentsList>
     </StyledPageHome>
   )
