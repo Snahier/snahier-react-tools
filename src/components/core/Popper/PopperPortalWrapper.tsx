@@ -65,20 +65,28 @@ export const PopperPortalWrapper = ({
   // Toggle off on click outside popper
   useEffect(() => {
     if (clickMode) {
-      const deactivateOnOutsideClick = (event: MouseEvent) => {
-        !popperRef.current?.contains(event.target as Node) && deactivatePopper()
+      const deactivateOnOutsideClick = (event: MouseEvent | TouchEvent) => {
+        if (
+          !popperRef.current?.contains(event.target as Node) &&
+          !targetRef.current?.contains(event.target as Node)
+        ) {
+          deactivatePopper()
+        }
       }
 
       if (isOpen) {
         setTimeout(() => {
-          document.addEventListener("click", deactivateOnOutsideClick)
+          document.addEventListener("mousedown", deactivateOnOutsideClick)
+          document.addEventListener("touchstart", deactivateOnOutsideClick)
         }, 1)
       } else {
-        document.removeEventListener("click", deactivateOnOutsideClick)
+        document.removeEventListener("mousedown", deactivateOnOutsideClick)
+        document.removeEventListener("touchstart", deactivateOnOutsideClick)
       }
 
       return () => {
-        document.removeEventListener("click", deactivateOnOutsideClick)
+        document.removeEventListener("mousedown", deactivateOnOutsideClick)
+        document.removeEventListener("touchstart", deactivateOnOutsideClick)
       }
     }
   }, [clickMode, isOpen])
