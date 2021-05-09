@@ -34,6 +34,10 @@ const ComponentsList = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 0;
 
+  a {
+    color: skyblue;
+  }
+
   @media (min-width: ${viewport.tablets}) {
     grid-template-columns: repeat(3, 1fr);
   }
