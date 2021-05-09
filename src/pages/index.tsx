@@ -15,7 +15,6 @@ export default function Home() {
       <h3>Available Components</h3>
       <ComponentsList>
         <Link href="carousel-slide">Carousel Slide</Link>
-        <Link href="modal">Modal</Link>
         <Link href="modal-portal">Modal Portal</Link>
         <Link href="tooltip">Tooltip</Link>
         <Link href="buttons">Buttons</Link>
