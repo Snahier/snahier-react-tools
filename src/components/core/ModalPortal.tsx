@@ -12,17 +12,17 @@ interface Position {
 interface ModalPortalProps {
   isOpen: boolean
   onClose: any
-  content: React.ReactNode
   position: Position
   backdropBlur?: number
+  children?: React.ReactNode
 }
 
 export const ModalPortal = ({
   isOpen,
   onClose,
-  content,
   position,
   backdropBlur,
+  children,
   ...props
 }: ModalPortalProps) => {
   const [amountOfModals, setAmountOfModals] = useState(0)
@@ -50,7 +50,7 @@ export const ModalPortal = ({
               transform: position.transform,
             }}
           >
-            {content}
+            {children}
           </Content>
         </StyledModalPortal>,
         document.body

@@ -25,17 +25,17 @@ export default function PageModalPortal({ ...props }) {
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
-        content={
-          <div
-            style={{
-              background: "red",
-              padding: "5rem",
-            }}
-          >
-            <button onClick={() => setIsModal2Open(true)}>Open modal 2</button>
-          </div>
-        }
-      />
+      >
+        <div
+          style={{
+            background: "red",
+            padding: "5rem",
+          }}
+        >
+          <button onClick={() => setIsModal2Open(true)}>Open modal 2</button>
+        </div>
+      </ModalPortal>
+
       <ModalPortal
         isOpen={isModal2Open}
         onClose={() => setIsModal2Open(false)}
@@ -43,17 +43,16 @@ export default function PageModalPortal({ ...props }) {
           top: 0,
           left: 0,
         }}
-        content={
-          <div
-            style={{
-              background: "blue",
-              padding: "5rem",
-            }}
-          >
-            <button onClick={() => setIsModal1Open(true)}>Open modal 1</button>
-          </div>
-        }
-      />
+      >
+        <div
+          style={{
+            background: "blue",
+            padding: "5rem",
+          }}
+        >
+          <button onClick={() => setIsModal1Open(true)}>Open modal 1</button>
+        </div>
+      </ModalPortal>
     </StyledPageModalPortal>
   )
 }
