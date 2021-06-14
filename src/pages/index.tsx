@@ -22,6 +22,7 @@ export default function Home() {
         <Link href="shimmer-effect">Shimmer Effect</Link>
         <Link href="alert">Alert</Link>
         <Link href="double-range">Double Range</Link>
+        <Link href="snackbar">Snackbar</Link>
       </ComponentsList>
     </StyledPageHome>
   )
