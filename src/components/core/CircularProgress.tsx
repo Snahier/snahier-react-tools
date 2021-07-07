@@ -3,7 +3,7 @@ import styled, { css, keyframes } from "styled-components/macro"
 
 const SIZE = 44
 
-interface CircularProgressProps {
+interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   classes?: any
   className?: string
   color?: string
