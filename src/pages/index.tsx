@@ -23,6 +23,7 @@ export default function Home() {
         <Link href="alert">Alert</Link>
         <Link href="double-range">Double Range</Link>
         <Link href="snackbar">Snackbar</Link>
+        <Link href="form-components">Form components</Link>
       </ComponentsList>
     </StyledPageHome>
   )
