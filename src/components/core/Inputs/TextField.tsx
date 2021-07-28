@@ -31,7 +31,6 @@ export const TextField = ({
   useEffect(() => {
     if (readOnly) setIsActive(true)
     if (error?.length) setIsActive(true)
-    console.log(inputRef.current?.readOnly)
   }, [error, readOnly])
 
   return (
