@@ -34,19 +34,13 @@ export const Switch = forwardRef(
 
     return (
       <StyledSwitch onClick={handleClick}>
-        <Input
-          {...props}
-          ref={ref}
-          type={type}
-          checked={isChecked}
-          onChange={props.onChange}
-        />
-
         <Background color={color} checked={isChecked} disabled={disabled}>
           <CircleWrapper checked={isChecked}>
             <Circle checked={isChecked} color={color} />
           </CircleWrapper>
         </Background>
+
+        <Input {...props} ref={ref} type={type} disabled={disabled} />
       </StyledSwitch>
     )
   }
@@ -57,7 +51,9 @@ const StyledSwitch = styled.div`
   align-items: center;
 
   width: 2rem;
+  max-width: 2rem;
   height: 1.25rem;
+  max-height: 1.25rem;
 `
 
 type BackgroundProps = {
@@ -86,6 +82,18 @@ const Background = styled.div<BackgroundProps>`
 
 const Input = styled.input`
   appearance: none;
+  position: absolute;
+  width: 2rem;
+  height: 1.25rem;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+
+    width: 100%;
+    height: 100%;
+  }
 `
 
 type CircleWrapperProps = {

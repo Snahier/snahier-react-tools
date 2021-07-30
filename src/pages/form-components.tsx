@@ -41,15 +41,12 @@ export default function PageFormComponents({
             default: <Switch />
             <Switch checked />
           </span>
-
           <span>
             disabled: <Switch disabled />
           </span>
           <span>
             disabled: <Switch disabled checked />
           </span>
-
-          <span>checked by default:</span>
         </div>
       </Content>
     </StyledPageFormComponents>
