@@ -14,12 +14,17 @@ interface CarouselSlideProps extends React.HTMLAttributes<HTMLDivElement> {
   }
 }
 
-export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
+export const CarouselSlide: React.FC<CarouselSlideProps> = ({
+  arrows,
+  buttons,
+  ...props
+}) => {
   const carouselSlideRef = useRef<HTMLDivElement>(null)
   const [scrollLeft, setScrollLeft] = useState<number>(0)
   const [slidesWidth, setSlidesWidth] = useState(0)
   const [slidesAmount, setSlidesAmount] = useState(0)
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
 
   const updateScrollPosition = (scrollPosition: number) =>
     setScrollLeft(scrollPosition)
@@ -35,24 +40,31 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
   }
 
   useEffect(() => {
-    setSlidesWidth(carouselSlideRef?.current!.children[0].clientWidth)
-    setSlidesAmount(React.Children.count(props.children))
+    const childrenLength = React.Children.count(props.children)
+    if (childrenLength > 0) {
+      setSlidesWidth(carouselSlideRef?.current!.children[0].clientWidth)
+      setSlidesAmount(childrenLength)
+    }
   }, [props.children])
 
   useEffect(() => {
-    if (Number.isInteger(scrollLeft / slidesWidth))
+    const isWholeNumber = Number.isInteger(scrollLeft / slidesWidth)
+
+    if (isWholeNumber) {
       setActiveSlide(scrollLeft / slidesWidth)
-  }, [scrollLeft, slidesWidth])
+      setIsScrolling(false)
+    }
+  }, [isScrolling, scrollLeft, slidesWidth])
 
   const renderCustomSlideButtons = () =>
     [...Array(slidesAmount)].map((element, index) =>
       activeSlide === index ? (
         <div key={index} onClick={() => navigateToSlide(index)}>
-          {props.buttons?.active}
+          {buttons?.active}
         </div>
       ) : (
         <div key={index} onClick={() => navigateToSlide(index)}>
-          {props.buttons?.inactive}
+          {buttons?.inactive}
         </div>
       )
     )
@@ -67,7 +79,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
     ))
 
   const renderButtons = () =>
-    props.buttons ? renderCustomSlideButtons() : renderDefaultSlideButtons()
+    buttons ? renderCustomSlideButtons() : renderDefaultSlideButtons()
+
+  const handleMouseOrTouchUp = () => {
+    setIsScrolling(true)
+  }
 
   return (
     <StyledCarouselSlide
@@ -77,7 +93,13 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = (props) => {
       }
       {...props}
     >
-      <ContentArea>{props.children}</ContentArea>
+      <ContentArea
+        isScrolling={isScrolling}
+        onMouseUp={handleMouseOrTouchUp}
+        onTouchEnd={handleMouseOrTouchUp}
+      >
+        {props.children}
+      </ContentArea>
       <ButtonWrapper>{renderButtons()}</ButtonWrapper>
     </StyledCarouselSlide>
   )
@@ -89,23 +111,33 @@ const StyledCarouselSlide = styled.div`
   background-color: lightblue;
 `
 
-const ContentArea = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
+type ContentAreaProps = {
+  isScrolling: boolean
+}
+const ContentArea = styled.div<ContentAreaProps>`
+  ${({ isScrolling }) => css`
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
 
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
-  > * {
-    scroll-snap-align: center;
-  }
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    > * {
+      scroll-snap-align: center;
+    }
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  @media (min-width: ${viewport.desktop.large}) {
-    overflow-x: hidden;
-  }
+    @media (min-width: ${viewport.desktop.large}) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    pointer-events: ${isScrolling ? "none" : "all"};
+    touch-action: ${isScrolling ? "none" : "auto"};
+  `}
 `
 
 const ButtonWrapper = styled.div`

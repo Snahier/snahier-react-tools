@@ -19,9 +19,7 @@ export default function PageCarouselSlide({
           active: <button>active</button>,
           inactive: <button>inactive</button>,
         }}
-        style={{
-          maxHeight: "300px",
-        }}>
+      >
         <Slide>
           <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>
@@ -33,10 +31,7 @@ export default function PageCarouselSlide({
         </Slide>
       </CarouselSlide>
 
-      <CarouselSlide
-        style={{
-          maxHeight: "300px",
-        }}>
+      <CarouselSlide>
         <Slide>
           <img src="https://picsum.photos/800/?random=1" alt="" />
         </Slide>
