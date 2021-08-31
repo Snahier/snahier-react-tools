@@ -1,4 +1,5 @@
-import { HTMLAttributes, useState } from "react"
+import { HTMLAttributes, useEffect, useRef, useState } from "react"
+import { useDrag } from "react-use-gesture"
 import styled, { css } from "styled-components"
 
 interface DebugWrapperProps extends HTMLAttributes<HTMLDivElement> {
@@ -14,21 +15,30 @@ interface DebugWrapperProps extends HTMLAttributes<HTMLDivElement> {
 
 export const DebugBox = ({
   placementMode = "fixed",
-  position = { top: 0, left: 0 },
   data,
   ...props
 }: DebugWrapperProps) => {
   const [isActive, setIsActive] = useState(true)
 
+  const boxRef = useRef<HTMLDivElement>(null)
+  const [boxPosition, setBoxPosition] = useState<[number, number]>([0, 0])
+  useEffect(() => {
+    const { top, left } = boxRef.current?.getBoundingClientRect() as DOMRect
+    setBoxPosition([left, top])
+  }, [])
+
+  const dragGesture = useDrag((state) => {
+    boxRef.current!.style.left = String(boxPosition[0] + state.offset[0]) + "px"
+    boxRef.current!.style.top = String(boxPosition[1] + state.offset[1]) + "px"
+  })
+
   return (
     <StyledDebugBox
       {...props}
+      {...dragGesture()}
+      ref={boxRef}
       style={{
         position: placementMode,
-        top: position.top,
-        left: position.left,
-        right: position.right,
-        bottom: position.bottom,
         ...props.style,
       }}
     >
@@ -46,6 +56,8 @@ export const DebugBox = ({
 }
 
 const StyledDebugBox = styled.div`
+  z-index: 1000000;
+
   padding: 0.5rem;
 
   background: rgba(0, 0, 0, 0.8);
@@ -53,6 +65,8 @@ const StyledDebugBox = styled.div`
   font-size: 1rem;
   font-weight: bold;
   text-shadow: 1px 1px 4px black;
+
+  user-select: none;
 `
 
 const TitleWrapper = styled.div`
