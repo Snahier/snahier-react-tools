@@ -113,7 +113,9 @@ interface StyledCircularProgressProps {
 }
 const StyledCircularProgress = styled.div<StyledCircularProgressProps>`
   ${({ variant = "indeterminate", color = "primary" }) => css`
-    display: inline-block;
+    display: flex;
+
+    aspect-ratio: 1 / 1;
 
     ${variants[variant]}
     color: ${color};
