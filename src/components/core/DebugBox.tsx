@@ -62,6 +62,7 @@ const StyledDebugBox = styled.div`
 
   background: rgba(0, 0, 0, 0.8);
 
+  color: white;
   font-size: 1rem;
   font-weight: bold;
   text-shadow: 1px 1px 4px black;
