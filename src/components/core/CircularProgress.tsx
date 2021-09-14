@@ -15,30 +15,28 @@ interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "indeterminate" | "determinate"
 }
 
-export const CircularProgress: React.FC<CircularProgressProps> = ({
+export const CircularProgress = ({
   classes,
   className,
   color = "inherit",
   disableShrink = false,
   size = 40,
-  thickness = 3.6,
+  thickness = 0.1,
   round = false,
   value = 0,
   variant = "indeterminate",
   ...props
-}) => {
+}: CircularProgressProps) => {
   const [progressValue, setProgressValue] = useState(0)
+  const formattedThickness = (thickness / (100 / 22)) * 100
 
   const circleStyle: React.CSSProperties = {}
   const rootStyle: React.CSSProperties = {}
 
   if (variant === "determinate") {
-    const circumference = 2 * Math.PI * ((SIZE - thickness) / 2)
+    const circumference = 2 * Math.PI * ((SIZE - formattedThickness) / 2)
     circleStyle.strokeDasharray = circumference.toFixed(3)
-    circleStyle.strokeDashoffset = `${(
-      ((100 - progressValue) / 100) *
-      circumference
-    ).toFixed(3)}px`
+    circleStyle.strokeDashoffset = `${(((100 - progressValue) / 100) * circumference).toFixed(3)}px`
   }
 
   useEffect(() => {
@@ -63,10 +61,10 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
           disableShrink={disableShrink}
           cx={SIZE}
           cy={SIZE}
-          r={(SIZE - thickness) / 2}
+          r={(SIZE - formattedThickness) / 2}
           style={circleStyle}
           fill="none"
-          strokeWidth={thickness}
+          strokeWidth={formattedThickness}
         />
       </Svg>
     </StyledCircularProgress>

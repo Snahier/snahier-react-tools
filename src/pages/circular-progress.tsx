@@ -34,9 +34,7 @@ export default function PageCircularProgress({ ...props }: PageCircularProgressP
       <p>Must receive a value property in order to work</p>
 
       <h3>Indeterminate</h3>
-      <p>
-        Does not require a value property to work, it'll just spin like a loader
-      </p>
+      <p>Does not require a value property to work, it'll just spin like a loader</p>
 
       <h3>Other props</h3>
       <p>It can receive size, line thickness, round line, color</p>
@@ -45,43 +43,23 @@ export default function PageCircularProgress({ ...props }: PageCircularProgressP
         <ContentItem>
           <h3>Determinate Progress</h3>
           <span>value: {value}%</span>
-          <CircularProgress
-            color="red"
-            variant="determinate"
-            value={value}
-            size={125}
-          />
+          <CircularProgress color="red" variant="determinate" value={value} size={125} />
         </ContentItem>
 
         <ContentItem>
           <h3>Round property</h3>
           <span>value: {value}%</span>
-          <CircularProgress
-            color="#0000ff"
-            variant="determinate"
-            size={150}
-            value={value}
-            round
-          />
+          <CircularProgress color="#0000ff" variant="determinate" size={150} value={value} round />
         </ContentItem>
 
         <ContentItem>
           <h3>Indeterminate progress</h3>
-          <CircularProgress
-            color="rgba(0,256,0, 0.5)"
-            variant="indeterminate"
-            size={100}
-          />
+          <CircularProgress color="rgba(0,256,0, 0.5)" variant="indeterminate" size={100} />
         </ContentItem>
 
         <ContentItem>
           <h3>Disable shrink</h3>
-          <CircularProgress
-            color="#00ff00"
-            variant="indeterminate"
-            size={100}
-            disableShrink
-          />
+          <CircularProgress color="#00ff00" variant="indeterminate" size={100} disableShrink />
         </ContentItem>
       </Content>
     </StyledPageCircularProgress>
@@ -92,9 +70,9 @@ const StyledPageCircularProgress = styled.div``
 
 const Content = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
+  gap: 2rem;
 `
 
 const ContentItem = styled.div`
@@ -103,4 +81,3 @@ const ContentItem = styled.div`
   align-content: start;
   gap: 1rem;
 `
-
