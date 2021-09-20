@@ -24,6 +24,7 @@ export default function Home() {
         <Link href="double-range">Double Range</Link>
         <Link href="snackbar">Snackbar</Link>
         <Link href="form-components">Form components</Link>
+        <Link href="expander-collapsible">Expander Collapsible</Link>
       </ComponentsList>
     </StyledPageHome>
   )
