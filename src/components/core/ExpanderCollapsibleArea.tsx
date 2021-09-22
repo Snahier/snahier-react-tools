@@ -48,9 +48,7 @@ export const ExpandableCollapsibleArea = ({ open, children, ...props }: Expandab
 }
 
 type StyledExpandableCollapsibleAreaProps = {}
-const StyledExpandableCollapsibleAreaArea = styled.div<StyledExpandableCollapsibleAreaProps>`
-  background: blue;
-`
+const StyledExpandableCollapsibleAreaArea = styled.div<StyledExpandableCollapsibleAreaProps>``
 
 type ContentProps = {}
 const Content = styled(animated.div)<ContentProps>`
