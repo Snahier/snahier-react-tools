@@ -27,6 +27,8 @@ export const CircularProgress = ({
   variant = "indeterminate",
   ...props
 }: CircularProgressProps) => {
+  if (thickness < 0 || thickness > 1) throw new Error("Thickness must be a value between 0 and 1.")
+
   const [progressValue, setProgressValue] = useState(0)
   const formattedThickness = (thickness / (100 / 22)) * 100
 
