@@ -2,11 +2,11 @@ import { HTMLAttributes, useEffect, useRef, useState } from "react"
 import { animated, useSpring } from "react-spring"
 import styled from "styled-components"
 
-interface ExpanderCollapsibleAreaProps extends HTMLAttributes<HTMLDivElement> {
+interface ExpandableCollapsibleAreaProps extends HTMLAttributes<HTMLDivElement> {
   open: boolean
 }
 
-export const ExpanderCollapsibleArea = ({ open, children, ...props }: ExpanderCollapsibleAreaProps) => {
+export const ExpandableCollapsibleArea = ({ open, children, ...props }: ExpandableCollapsibleAreaProps) => {
   const contentRef = useRef<HTMLDivElement | null>(null)
   const [contentHeight, setContentHeight] = useState(0)
 
@@ -39,16 +39,16 @@ export const ExpanderCollapsibleArea = ({ open, children, ...props }: ExpanderCo
   const contentSpring = useSpring({ height: open ? contentHeight : 0 })
 
   return (
-    <StyledExpanderCollapsibleArea {...props}>
+    <StyledExpandableCollapsibleAreaArea {...props}>
       <Content ref={contentRef} style={contentSpring}>
         {children}
       </Content>
-    </StyledExpanderCollapsibleArea>
+    </StyledExpandableCollapsibleAreaArea>
   )
 }
 
-type StyledExpanderCollapsibleAreaProps = {}
-const StyledExpanderCollapsibleArea = styled.div<StyledExpanderCollapsibleAreaProps>`
+type StyledExpandableCollapsibleAreaProps = {}
+const StyledExpandableCollapsibleAreaArea = styled.div<StyledExpandableCollapsibleAreaProps>`
   background: blue;
 `
 

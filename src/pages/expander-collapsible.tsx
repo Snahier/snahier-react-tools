@@ -1,4 +1,4 @@
-import { ExpanderCollapsibleArea } from "components/core/ExpanderCollapsibleArea"
+import { ExpandableCollapsibleArea } from "components/core/ExpanderCollapsibleArea"
 import { Header } from "components/templates/Header"
 import { useState } from "react"
 import styled from "styled-components"
@@ -31,23 +31,23 @@ export default function PageExpanderCollapsible({ ...props }: PageExpanderCollap
         </div>
 
         <div>
-          <ExpanderCollapsibleArea open={contents[1]}>
+          <ExpandableCollapsibleArea open={contents[1]}>
             <span>content 1</span>
 
-            <ExpanderCollapsibleArea open={contents[2]}>
+            <ExpandableCollapsibleArea open={contents[2]}>
               <span>content 2</span>
 
-              <ExpanderCollapsibleArea open={contents[3]}>
+              <ExpandableCollapsibleArea open={contents[3]}>
                 <span>content 3</span>
-              </ExpanderCollapsibleArea>
-            </ExpanderCollapsibleArea>
+              </ExpandableCollapsibleArea>
+            </ExpandableCollapsibleArea>
 
-            <ExpanderCollapsibleArea open={contents[4]}>
+            <ExpandableCollapsibleArea open={contents[4]}>
               <span>content 4</span>
-            </ExpanderCollapsibleArea>
+            </ExpandableCollapsibleArea>
 
             {/* <animated.div style={divSpring} onClick={() => setIsOpen((prev) => !prev)} /> */}
-          </ExpanderCollapsibleArea>
+          </ExpandableCollapsibleArea>
         </div>
       </Content>
     </StyledPageExpanderCollapsible>
