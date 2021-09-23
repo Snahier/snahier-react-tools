@@ -17,17 +17,13 @@ export default function PageModalPortal({ ...props }) {
         <button onClick={() => setIsModal2Open(true)}>Open modal 2</button>
       </Content>
 
-      <ModalPortal
-        isOpen={isModal1Open}
-        onClose={() => setIsModal1Open(false)}
-        position={{
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
+      <ModalPortal isOpen={isModal1Open} onClose={() => setIsModal1Open(false)}>
         <div
           style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             background: "red",
             padding: "5rem",
           }}
@@ -36,16 +32,12 @@ export default function PageModalPortal({ ...props }) {
         </div>
       </ModalPortal>
 
-      <ModalPortal
-        isOpen={isModal2Open}
-        onClose={() => setIsModal2Open(false)}
-        position={{
-          top: 0,
-          left: 0,
-        }}
-      >
+      <ModalPortal isOpen={isModal2Open} onClose={() => setIsModal2Open(false)}>
         <div
           style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
             background: "blue",
             padding: "5rem",
           }}
