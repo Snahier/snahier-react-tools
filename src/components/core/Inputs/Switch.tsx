@@ -1,9 +1,5 @@
-import {
-  ForwardedRef,
-  InputHTMLAttributes,
-} from "hoist-non-react-statics/node_modules/@types/react"
 import { darken, lighten, rgba } from "polished"
-import { forwardRef, useState } from "react"
+import { ForwardedRef, forwardRef, InputHTMLAttributes, useState } from "react"
 import styled, { css } from "styled-components"
 
 interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,20 +9,12 @@ interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Switch = forwardRef(
   (
-    {
-      type = "checkbox",
-      checked = false,
-      disabled = false,
-      color = "blue",
-      ...props
-    }: SwitchProps,
+    { type = "checkbox", checked = false, disabled = false, color = "blue", ...props }: SwitchProps,
     ref: ForwardedRef<HTMLInputElement> | null
   ) => {
     const [isChecked, setIsChecked] = useState(checked ?? false)
 
-    const handleClick = (
-      event: React.MouseEvent<HTMLInputElement, MouseEvent>
-    ) => {
+    const handleClick = (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
       if (disabled) return null
       if (props.onClick) props.onClick(event)
       setIsChecked((previous) => !previous)
@@ -150,8 +138,7 @@ const Circle = styled.div<CircleProps>`
       width: 1.25rem;
       height: 1.25rem;
 
-      box-shadow: 0 2px 4px
-        ${darken(checked ? 0.2 : 0, checked ? color : "white")};
+      box-shadow: 0 2px 4px ${darken(checked ? 0.2 : 0, checked ? color : "white")};
       border-radius: 50%;
       background: ${checked ? color : "white"};
     }
