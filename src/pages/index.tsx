@@ -14,7 +14,7 @@ export default function Home() {
       <h2>Homepage</h2>
       <h3>Available Components</h3>
       <ComponentsList>
-        <Link href="carousel-slide">Carousel Slide</Link>
+        <Link href="carousel-slide">Carousel Slide (prototyping)</Link>
         <Link href="modal-portal">Modal Portal</Link>
         <Link href="tooltip">Tooltip</Link>
         <Link href="buttons">Buttons</Link>
@@ -25,6 +25,7 @@ export default function Home() {
         <Link href="snackbar">Snackbar</Link>
         <Link href="form-components">Form components</Link>
         <Link href="expander-collapsible">Expander Collapsible</Link>
+        <Link href="timer-picker">Timer picker (prototyping)</Link>
       </ComponentsList>
     </StyledPageHome>
   )
