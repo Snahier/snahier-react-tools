@@ -1,13 +1,19 @@
+import { Checkbox } from "components/core/Inputs/Checkbox"
 import { Switch } from "components/core/Inputs/Switch"
 import { TextField } from "components/core/Inputs/TextField"
 import { Header } from "components/templates/Header"
+import { useForm } from "react-hook-form"
 import styled from "styled-components"
 
 interface PageFormComponentsProps {}
 
-export default function PageFormComponents({
-  ...props
-}: PageFormComponentsProps) {
+export default function PageFormComponents({ ...props }: PageFormComponentsProps) {
+  const { register } = useForm({
+    defaultValues: {
+      checked: true,
+    },
+  })
+
   return (
     <StyledPageFormComponents {...props} className="page">
       <Header />
@@ -17,22 +23,9 @@ export default function PageFormComponents({
         <div>
           <h2>TextField</h2>
           <TextField label="Text field" placeholder="Placeholder" />
-          <TextField
-            label="Text field"
-            placeholder="Placeholder"
-            error="Error message"
-          />
-          <TextField
-            label="Text field"
-            placeholder="Placeholder"
-            helper="Helper message"
-          />
-          <TextField
-            label="Text field"
-            placeholder="Placeholder"
-            value="Read only"
-            readOnly
-          />
+          <TextField label="Text field" placeholder="Placeholder" error="Error message" />
+          <TextField label="Text field" placeholder="Placeholder" helper="Helper message" />
+          <TextField label="Text field" placeholder="Placeholder" value="Read only" readOnly />
         </div>
 
         <div>
@@ -47,6 +40,15 @@ export default function PageFormComponents({
           <span>
             disabled: <Switch disabled checked />
           </span>
+        </div>
+
+        <div>
+          <h2>Custom checkbox</h2>
+          <div>
+            react-hook-form: <Checkbox {...register("checked")} />
+            controlled on: <Checkbox checked />
+            controlled off: <Checkbox />
+          </div>
         </div>
       </Content>
     </StyledPageFormComponents>
