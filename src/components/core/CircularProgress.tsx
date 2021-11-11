@@ -3,9 +3,7 @@ import styled, { css, keyframes } from "styled-components/macro"
 
 const SIZE = 44
 
-interface CircularProgressProps {
-  classes?: any
-  className?: string
+interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: string
   disableShrink?: boolean
   size?: number | string
@@ -15,30 +13,28 @@ interface CircularProgressProps {
   variant?: "indeterminate" | "determinate"
 }
 
-export const CircularProgress: React.FC<CircularProgressProps> = ({
-  classes,
-  className,
+export const CircularProgress = ({
   color = "inherit",
   disableShrink = false,
   size = 40,
-  thickness = 3.6,
+  thickness = 0.1,
   round = false,
   value = 0,
   variant = "indeterminate",
   ...props
-}) => {
+}: CircularProgressProps) => {
+  if (thickness < 0 || thickness > 1) throw new Error("Thickness must be a value between 0 and 1.")
+
   const [progressValue, setProgressValue] = useState(0)
+  const formattedThickness = (thickness / (100 / 22)) * 100
 
   const circleStyle: React.CSSProperties = {}
   const rootStyle: React.CSSProperties = {}
 
   if (variant === "determinate") {
-    const circumference = 2 * Math.PI * ((SIZE - thickness) / 2)
+    const circumference = 2 * Math.PI * ((SIZE - formattedThickness) / 2)
     circleStyle.strokeDasharray = circumference.toFixed(3)
-    circleStyle.strokeDashoffset = `${(
-      ((100 - progressValue) / 100) *
-      circumference
-    ).toFixed(3)}px`
+    circleStyle.strokeDashoffset = `${(((100 - progressValue) / 100) * circumference).toFixed(3)}px`
   }
 
   useEffect(() => {
@@ -63,10 +59,10 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
           disableShrink={disableShrink}
           cx={SIZE}
           cy={SIZE}
-          r={(SIZE - thickness) / 2}
+          r={(SIZE - formattedThickness) / 2}
           style={circleStyle}
           fill="none"
-          strokeWidth={thickness}
+          strokeWidth={formattedThickness}
         />
       </Svg>
     </StyledCircularProgress>
@@ -113,7 +109,9 @@ interface StyledCircularProgressProps {
 }
 const StyledCircularProgress = styled.div<StyledCircularProgressProps>`
   ${({ variant = "indeterminate", color = "primary" }) => css`
-    display: inline-block;
+    display: flex;
+
+    aspect-ratio: 1 / 1;
 
     ${variants[variant]}
     color: ${color};
@@ -122,6 +120,10 @@ const StyledCircularProgress = styled.div<StyledCircularProgressProps>`
 
 const Svg = styled.svg`
   display: block;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
 `
 
 const circleVariants = {

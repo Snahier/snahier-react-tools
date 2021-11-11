@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components/macro"
-import { CircularProgress } from "../components/core/CircularProgress"
+import { CircularProgress } from "../components/core/CircularProgress/CircularProgress"
 import { Header } from "../components/templates/Header"
 import { randomIntegerBetween } from "../helpers/randomIntegerBetween"
 
@@ -34,9 +34,7 @@ export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
       <p>Must receive a value property in order to work</p>
 
       <h3>Indeterminate</h3>
-      <p>
-        Does not require a value property to work, it'll just spin like a loader
-      </p>
+      <p>Does not require a value property to work, it'll just spin like a loader</p>
 
       <h3>Other props</h3>
       <p>It can receive size, line thickness, round line, color</p>
@@ -45,43 +43,23 @@ export const PageCircularProgress: React.FC<PageCircularProgressProps> = () => {
         <ContentItem>
           <h3>Determinate Progress</h3>
           <span>value: {value}%</span>
-          <CircularProgress
-            color="red"
-            variant="determinate"
-            value={value}
-            size={125}
-          />
+          <CircularProgress color="red" variant="determinate" value={value} size={125} />
         </ContentItem>
 
         <ContentItem>
           <h3>Round property</h3>
           <span>value: {value}%</span>
-          <CircularProgress
-            color="#0000ff"
-            variant="determinate"
-            size={150}
-            value={value}
-            round
-          />
+          <CircularProgress color="#0000ff" variant="determinate" size={150} value={value} round />
         </ContentItem>
 
         <ContentItem>
           <h3>Indeterminate progress</h3>
-          <CircularProgress
-            color="rgba(0,256,0, 0.5)"
-            variant="indeterminate"
-            size={100}
-          />
+          <CircularProgress color="rgba(0,256,0, 0.5)" variant="indeterminate" size={100} />
         </ContentItem>
 
         <ContentItem>
           <h3>Disable shrink</h3>
-          <CircularProgress
-            color="#00ff00"
-            variant="indeterminate"
-            size={100}
-            disableShrink
-          />
+          <CircularProgress color="#00ff00" variant="indeterminate" size={100} disableShrink />
         </ContentItem>
       </Content>
     </StyledPageCircularProgress>

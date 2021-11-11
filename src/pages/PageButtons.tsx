@@ -1,5 +1,5 @@
 import styled from "styled-components/macro"
-import { Button } from "../components/core/Button"
+import { Button } from "../components/core/Button/Button"
 import { Header } from "../components/templates/Header"
 
 interface PageButtonsProps {}
