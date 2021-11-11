@@ -1,5 +1,5 @@
 import { PageReloadCarousel } from "pages/PageReloadCarousel"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { PageAlert } from "./PageAlert"
 import { PageButtons } from "./PageButtons"
 import { PageCarouselSlide } from "./PageCarouselSlide"
@@ -12,21 +12,21 @@ import { PageTooltip } from "./PageTooltip"
 
 interface RoutesProps {}
 
-export const Routes: React.FC<RoutesProps> = (props) => {
+export const AppRoutes: React.FC<RoutesProps> = (props) => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={PageHome} />
-        <Route path="/carousel-slide" component={PageCarouselSlide} />
-        <Route path="/modal" component={PageModal} />
-        <Route path="/tooltip" component={PageTooltip} />
-        <Route path="/buttons" component={PageButtons} />
-        <Route path="/circular-progress" component={PageCircularProgress} />
-        <Route path="/shimmer-effect" component={PageShimmerEffect} />
-        <Route path="/alert" component={PageAlert} />
-        <Route path="/double-range" component={PageDoubleRange} />
-        <Route path="/reload-carousel" component={PageReloadCarousel} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<PageHome />} />
+        <Route path="/carousel-slide" element={<PageCarouselSlide />} />
+        <Route path="/modal" element={<PageModal />} />
+        <Route path="/tooltip" element={<PageTooltip />} />
+        <Route path="/buttons" element={<PageButtons />} />
+        <Route path="/circular-progress" element={<PageCircularProgress />} />
+        <Route path="/shimmer-effect" element={<PageShimmerEffect />} />
+        <Route path="/alert" element={<PageAlert />} />
+        <Route path="/double-range" element={<PageDoubleRange />} />
+        <Route path="/reload-carousel" element={<PageReloadCarousel />} />
+      </Routes>
     </BrowserRouter>
   )
 }
