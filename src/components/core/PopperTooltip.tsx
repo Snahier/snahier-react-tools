@@ -9,12 +9,7 @@ interface PopperTooltipProps {
   clickMode?: boolean
 }
 
-export const PopperTooltip: React.FC<PopperTooltipProps> = ({
-  placement = "top",
-  arrow,
-  clickMode,
-  ...props
-}) => {
+export const PopperTooltip: React.FC<PopperTooltipProps> = ({ placement = "top", arrow, clickMode, ...props }) => {
   const componentRef = useRef<HTMLDivElement | null>(null)
 
   const [boxRef, setBoxRef] = useState<HTMLDivElement | null>(null)
@@ -49,8 +44,7 @@ export const PopperTooltip: React.FC<PopperTooltipProps> = ({
 
   useEffect(() => {
     const deactivateOnOutsideClick = (event: MouseEvent) => {
-      !componentRef.current?.contains(event.target as Node) &&
-        deactivateTooltip()
+      !componentRef.current?.contains(event.target as Node) && deactivateTooltip()
     }
 
     clickMode && isOpen
