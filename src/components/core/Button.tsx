@@ -1,19 +1,14 @@
+import { CircularProgress } from "components/core/CircularProgress"
 import { grayscale, lighten, readableColor } from "polished"
 import { ButtonHTMLAttributes, useEffect, useRef, useState } from "react"
 import styled, { css, keyframes } from "styled-components/macro"
-import { CircularProgress } from "./CircularProgress"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string
   load?: boolean
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  color = "#00008b",
-  load,
-  children,
-  ...props
-}) => {
+export const Button: React.FC<ButtonProps> = ({ color = "#00008b", load, children, ...props }) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [width, setWidth] = useState(0)
 
@@ -54,14 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
   )
 
   return (
-    <StyledButton
-      {...props}
-      ref={buttonRef}
-      color={color}
-      load={load}
-      width={width}
-      onClick={handleCreateRipples}
-    >
+    <StyledButton {...props} ref={buttonRef} color={color} load={load} width={width} onClick={handleCreateRipples}>
       {load && displayLoader()}
       {children}
     </StyledButton>

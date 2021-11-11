@@ -4,8 +4,6 @@ import styled, { css, keyframes } from "styled-components/macro"
 const SIZE = 44
 
 interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
-  classes?: any
-  className?: string
   color?: string
   disableShrink?: boolean
   size?: number | string
@@ -16,8 +14,6 @@ interface CircularProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const CircularProgress = ({
-  classes,
-  className,
   color = "inherit",
   disableShrink = false,
   size = 40,
@@ -124,6 +120,10 @@ const StyledCircularProgress = styled.div<StyledCircularProgressProps>`
 
 const Svg = styled.svg`
   display: block;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
 `
 
 const circleVariants = {

@@ -4,7 +4,6 @@ import styled, { css, keyframes } from "styled-components/macro"
 interface ShimmerEffectProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: number | string
   height?: number | string
-  gridArea?: string
   color?: string
   circle?: boolean
 }
@@ -12,7 +11,6 @@ interface ShimmerEffectProps extends React.HTMLAttributes<HTMLDivElement> {
 export const ShimmerEffect: React.FC<ShimmerEffectProps> = ({
   width = "100%",
   height = "100%",
-  gridArea,
   color = "#d3d3d3",
   circle = false,
   ...props
@@ -24,7 +22,6 @@ export const ShimmerEffect: React.FC<ShimmerEffectProps> = ({
         ...props.style,
         width,
         height,
-        gridArea,
       }}
       color={color}
       circle={circle}
