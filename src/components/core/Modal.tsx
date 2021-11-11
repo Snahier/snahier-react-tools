@@ -1,3 +1,4 @@
+import { rgba } from "polished"
 import styled, { css } from "styled-components/macro"
 
 interface ModalProps {
@@ -6,15 +7,12 @@ interface ModalProps {
   opacity?: number
 }
 
-export const Modal: React.FC<ModalProps> = ({ opacity = 20, ...props }) => {
+export const Modal: React.FC<ModalProps> = ({ opacity = 0.2, ...props }) => {
   const opacityPercentageInDecimals = opacity / 100
 
   return props.open ? (
     <StyledModal>
-      <BackgroundBox
-        opacity={opacityPercentageInDecimals}
-        onClick={() => props.onClose()}
-      />
+      <BackgroundBox opacity={opacityPercentageInDecimals} onClick={() => props.onClose()} />
       <ModalContent>{props.children}</ModalContent>
     </StyledModal>
   ) : null
@@ -36,7 +34,7 @@ const BackgroundBox = styled.div<BackgroundBoxProps>`
     width: 100vw;
     height: 100vh;
 
-    background-color: rgba(0, 0, 0, ${opacity});
+    background-color: ${rgba("black", opacity ? opacity * 100 : 0)};
   `}
 `
 
