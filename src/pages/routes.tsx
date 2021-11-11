@@ -1,4 +1,4 @@
-import { PageSpinSelect } from "pages/PageSpinSelect"
+import { PageReloadCarousel } from "pages/PageReloadCarousel"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { PageAlert } from "./PageAlert"
 import { PageButtons } from "./PageButtons"
@@ -25,7 +25,7 @@ export const Routes: React.FC<RoutesProps> = (props) => {
         <Route path="/shimmer-effect" component={PageShimmerEffect} />
         <Route path="/alert" component={PageAlert} />
         <Route path="/double-range" component={PageDoubleRange} />
-        <Route path="/spin-select" component={PageSpinSelect} />
+        <Route path="/reload-carousel" component={PageReloadCarousel} />
       </Switch>
     </BrowserRouter>
   )

@@ -27,7 +27,7 @@ export const PageHome: React.FC<StyledPageHomeProps> = () => {
         <Link to="shimmer-effect">Shimmer Effect</Link>
         <Link to="alert">Alert</Link>
         <Link to="double-range">Double Range</Link>
-        <Link to="spin-select">Spin Select</Link>
+        <Link to="reload-carousel">Reload Carousel</Link>
       </ComponentsList>
     </StyledPageHome>
   )
