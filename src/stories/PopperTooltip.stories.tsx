@@ -1,9 +1,6 @@
-import { ComponentProps } from "react"
-
-import { Story, Meta } from "@storybook/react"
+import { Meta, Story } from "@storybook/react"
 import { PopperTooltip } from "components/core/PopperTooltip"
-import { ThemeProvider } from "styled-components"
-import { dark } from "styles/theme"
+import { ComponentProps } from "react"
 
 export default {
   component: PopperTooltip,
@@ -11,13 +8,11 @@ export default {
 } as Meta
 
 const Template: Story<ComponentProps<typeof PopperTooltip>> = (args) => (
-  <ThemeProvider theme={dark}>
-    <div style={{ display: "flex" }}>
-      <PopperTooltip {...args}>
-        <button>child example</button>
-      </PopperTooltip>
-    </div>
-  </ThemeProvider>
+  <div style={{ display: "flex" }}>
+    <PopperTooltip {...args}>
+      <button>child example</button>
+    </PopperTooltip>
+  </div>
 )
 
 export const Default = Template.bind({})
