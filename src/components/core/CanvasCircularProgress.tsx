@@ -1,5 +1,25 @@
+import { RefObject } from "hoist-non-react-statics/node_modules/@types/react"
 import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
+
+const useResizeObserver = (ref: RefObject<HTMLDivElement>) => {
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect
+      setWidth(width)
+      setHeight(height)
+    })
+
+    resizeObserver.observe(ref.current as Element)
+
+    return () => resizeObserver.disconnect()
+  }, [ref])
+
+  return { width, height }
+}
 
 interface CanvasCircularProgressProps {
   progress: number
@@ -17,6 +37,7 @@ export const CanvasCircularProgress = ({
 }: CanvasCircularProgressProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { width, height } = useResizeObserver(containerRef)
 
   const [canvas, setCanvas] = useState<HTMLCanvasElement>()
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
@@ -50,7 +71,7 @@ export const CanvasCircularProgress = ({
         context.closePath()
       }
     }
-  }, [canvas, context, lineCap, progress, thickness])
+  }, [canvas, context, lineCap, progress, thickness, width, height])
 
   return (
     <StyledCanvasCircularProgress
