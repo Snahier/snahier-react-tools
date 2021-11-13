@@ -25,7 +25,7 @@ interface CanvasCircularProgressProps {
   progress: number
   thickness?: number
   size?: number | string
-  lineCap: CanvasLineCap
+  color?: string
 }
 
 export const CanvasCircularProgress = ({
@@ -33,6 +33,7 @@ export const CanvasCircularProgress = ({
   thickness = 0.5,
   size = "10rem",
   lineCap = "square",
+  color = "#808080",
   ...props
 }: CanvasCircularProgressProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -63,7 +64,7 @@ export const CanvasCircularProgress = ({
 
         context.clearRect(0, 0, canvas.width, canvas.height)
         context.beginPath()
-        context.strokeStyle = "#A5DEF1"
+        context.strokeStyle = color
         context.lineWidth = thicknessValue
         context.lineCap = lineCap
         context.arc(canvasX, canvasY, radius, 0, Math.PI * progress * 2, false)
@@ -71,7 +72,7 @@ export const CanvasCircularProgress = ({
         context.closePath()
       }
     }
-  }, [canvas, context, lineCap, progress, thickness, width, height])
+  }, [canvas, context, width, height, lineCap, progress, thickness, color])
 
   return (
     <StyledCanvasCircularProgress
@@ -92,9 +93,7 @@ export const CanvasCircularProgress = ({
 }
 
 type StyledCanvasCircularProgressProps = {}
-const StyledCanvasCircularProgress = styled.div<StyledCanvasCircularProgressProps>`
-  background: red;
-`
+const StyledCanvasCircularProgress = styled.div<StyledCanvasCircularProgressProps>``
 
 type CanvasProps = {}
 const Canvas = styled.canvas<CanvasProps>``
