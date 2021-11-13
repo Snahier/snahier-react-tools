@@ -25,13 +25,14 @@ interface CanvasCircularProgressProps {
   progress: number
   thickness?: number
   size?: number | string
+  lineCap?: CanvasLineCap
   color?: string
 }
 
 export const CanvasCircularProgress = ({
   progress,
   thickness = 0.5,
-  size = "10rem",
+  size = "100%",
   lineCap = "square",
   color = "#808080",
   ...props
