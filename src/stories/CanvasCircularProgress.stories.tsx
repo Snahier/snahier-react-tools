@@ -9,9 +9,17 @@ export default {
 } as Meta
 
 const Template: Story<ComponentProps<typeof CanvasCircularProgress>> = (args) => (
-  <CanvasCircularProgress {...args} />
+  <div style={{ display: "flex", width: 400, height: 400, backgroundColor: "skyblue" }}>
+    <CanvasCircularProgress {...args} />
+  </div>
 )
 
 export const Default = Template.bind({})
 
-Default.args = {}
+Default.args = {
+  progress: 0.75,
+  thickness: 0.1,
+  size: "100%",
+  color: "#808080",
+  lineCap: "butt",
+}
